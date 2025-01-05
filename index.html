@@ -3,169 +3,144 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="https://www.codegrid.com/site-icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sreeman P.</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-
-        /* Reset default styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: black;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 0.50;
-            padding: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Name styling */
-        .name {
-            color: #005BE7;
-            font-size: 24px;
-            font-weight: 400;
-            margin-bottom: 2rem;
-        }
-
-        .name a {
-            color: #005BE7;
-            font-size: 24px;
-            font-weight: 400;
-            margin-bottom: 2rem;
-            text-decoration: none;
-        }
-
-        /* Bio text styling */
-        .bio {
-            color: white;
-            font-family: "JetBrains Mono", serif;
-            font-size: 16px;
-            font-weight: 100;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            line-height: 1.20;
-        }
-
-        /* Navigation styling */
-        .nav {
-            margin-bottom: 1rem;
-        }
-
-        .nav a {
-            font-family: "JetBrains Mono", serif;
-            font-size: 16px;
-            color: white;
-            line-height: 1;
-            display: inline-block;
-            text-decoration: none;
-            margin-right: 1rem;
-            font-weight: 100;
-        }
-
-        .nav a:hover {
-            text-decoration: underline;
-        }
-
-        .nav a::after {
-            color: white;
-            content: "↗";
-            margin-left: 0.5rem;
-            font-size: 16px;
-        }
-
-        /* Copyright styling */
-        .copyright {
-            font-family: "JetBrains Mono", serif;
-            font-size: 16px;
-            font-weight: 100;
-            color: #FF4433;
-            margin-top: auto;
-            padding-top: 2rem;
-        }
-
-        .copyright a {
-            font-family: "JetBrains Mono", serif;
-            font-size: 16px;
-            font-weight: 100;
-            text-decoration: none;
-            color: #FF4433;
-            margin-top: auto;
-            padding-top: 2rem;
-        }
-
-        .cookie-popup {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 15px;
-            line-height: 1.20;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cookie-popup p {
-            margin: 0;
-            color: #ffffff;
-            font-size: 14px;
-        }
-
-        .close-button {
-            background-color: black;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .close-button:hover {
-            background-color: white;
-            color: black;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            .nav a {
-                display: block;
-                margin-bottom: 0.5rem;
-            }
-        }
-    </style>
+    <meta name="author" content="Sreeman Reddy">
+    <meta name="description" content="AI Developer, AI Designer...">
+    <meta name="keywords" content="AI Design, AI Development, Coding, YouTube Channel">
+    <link rel="stylesheet" crossorigin="" href="/assets/index-DguZUYmr.css">
 </head>
 
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing:grayscale
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    color: white;
+    font-weight: 100;
+    line-height: 1.085;
+    letter-spacing: -.0275em;
+    position: relative;
+    will-change:transform, opacity;
+    font-family: "JetBrains Mono", serif;
+}
+
+.header {
+    padding: 1em;
+    width:100%
+}
+
+.header h1 .line {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-size: 24px;
+    overflow: hidden;
+    will-change: transform, opacity;
+    clip-path:polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+}
+
+.ctas {
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    width: max-content;
+    display: flex;
+    gap: 2em;
+    align-items:stretch
+}
+
+.divider {
+    position: relative;
+    width: 2px;
+    color: white;
+    background-color: black;
+    align-self: stretch;
+    will-change: transform, clip-path;
+    transform:rotate(20deg)
+}
+
+.subscribe-btn a, .pro-btn-wrapper a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    will-change: transform, opacity;
+    cursor:pointer
+}
+
+.pro-btn {
+    cursor:pointer
+}
+
+.subscribe-btn a h1 .line, .pro-btn-wrapper a h1 .line {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-size: 24px;
+    overflow: hidden;
+    will-change: transform, opacity;
+    clip-path:polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+}
+
+@media (max-width: 900px) {
+    h1 {
+        font-size: 8vw;
+        letter-spacing:-.035em
+    }
+
+    .ctas {
+        gap: 1.5em
+    }
+}
+</style>
+
 <body>
-    <br>
-    <h1 class="name"><a href="https://sreeman.app" onclick="playSound()">Sreeman Reddy</a></h1>
 
-    <p class="bio">I'm a AI developer<br>based in India.</p>
-    <nav class="nav">
-        <a href="" target="_blank" onclick="playSound()">Index</a>
-        <a href="#about" target="_blank" onclick="playSound()">About</a>
-        <a href="#work" target="_blank" onclick="playSound()">Work</a>
-        <a href="#work" target="_blank" onclick="playSound()">Contact</a>
-    </nav>
-
-    <p class="copyright"><a href="https://sreeman.xyz" target="_blank" oonclick="playSound()">© Sreeman P.</a></p>
-
-    <div class="cookie-popup" onclick="playSound()">
-        <p>This website uses cookies to ensure you get the best experience on our website.</p>
-        <button class="close-button" onclick="this.parentElement.style.display='none';">Close</button>
+    <div class="header">
+        <h1 style>
+            <div class="line" style="display: block; text-align: start; width: 100%;"><span
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Sharing all the data<br> behind building AI<br> interactive experiences<br> and the finest web designs<br> that truly stand out.</span>
+            </div>
+        </h1>
     </div>
-
-    <audio autoplay="" loop="" src="./media/inspirational-calm-emotional-272593.mp3"></audio>
+    
+    <div class="ctas">
+        <div class="subscribe-btn-wrapper">
+            <div class="subscribe-btn">
+                <a href="https://youtube.com/@sreemanrp" oonclick="playSound()">
+                    <h1 style>
+                        <div class="line" style="display: block; text-align: start; width: 100%;"><span
+                                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Subscribe</span>
+                        </div>
+                    </h1>
+                </a>
+            </div>
+        </div>
+        <div class="divider" style="color: white; clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);"></div>
+        <div class="pro-btn-wrapper">
+            <a href="https://sreemanrp.gumroad.com/l/sreemanrppro" oonclick="playSound()">
+                <h1 style>
+                    <div class="line" style="display: block; text-align: start; width: 100%;"><span
+                            style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">GetPRO</span>
+                    </div>
+                </h1>
+            </a>
+        </div>
+    </div>
 
     <audio id="clickSound" preload="auto">
         <source src="https://www.savoirfaire.nyc/_nuxt/hover.b226066e.mp3" type="audio/mpeg">
@@ -179,5 +154,6 @@
             sound.play();
         }
     </script>
+
 </body>
-</html>☙
+</html>
