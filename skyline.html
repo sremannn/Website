@@ -17,14 +17,17 @@
             line-height: 1.5;
             color: #000;
             padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Header styles */
         header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8rem;
+            align-items: center;
+            margin-bottom: 2rem;
         }
 
         .logo {
@@ -32,17 +35,17 @@
             font-weight: normal;
         }
 
-        .nav-menu {
+         .nav-menu {
             display: flex;
             gap: 2rem;
             list-style: none;
             margin-right: 4rem;
         }
-        
+
         /* About section styles */
         .about-section {
             max-width: 800px;
-            margin-bottom: 2rem;
+            margin-bottom: 4rem;
         }
 
         .about-section h2 {
@@ -58,23 +61,22 @@
         }
 
         /* Main content styles */
-        main {
+        .main-content {
+            flex-grow: 1;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            margin-top: 4rem;
         }
 
         /* Footer styles */
         footer {
-            margin-top: auto;
-            padding-top: 2rem;
+            margin-top: 2rem;
         }
 
         .footer-content {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            font-size: 18px
         }
 
         .social-links {
@@ -86,7 +88,6 @@
         }
 
         .copyright {
-            font-size: 16px;
             color: #666;
         }
 
@@ -110,7 +111,8 @@
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
-                gap: 2rem;
+                align-items: flex-start;
+                gap: 1rem;
             }
 
             .nav-menu {
@@ -119,12 +121,6 @@
 
             .about-section {
                 margin-bottom: 2rem;
-            }
-
-            footer {
-                position: static;
-                margin-top: 4rem;
-                font-size: 2.5rem;
             }
         }
     </style>
@@ -140,29 +136,31 @@
             </ul>
         </nav>
     </header>
-    
-    <section class="about-section">
-        <h2>About Us</h2>
-        <p>
-            We are a creative studio specializing in design, branding, and digital experiences. 
-            Our passion lies in crafting meaningful solutions that connect brands with their audiences. 
-            Through innovative thinking and meticulous attention to detail, we transform ideas into 
-            impactful visual stories.
-        </p>
-    </section>
 
-    <footer>
-        <div class="footer-content">
-            <ul class="social-links">
-                <li><a href="#facebook">Facebook</a></li>
-                <li><a href="#instagram">Instagram</a></li>
-                <li><a href="#linkedin">LinkedIn</a></li>
-            </ul>
-            <div class="copyright">
-                © Skyline<br>
-                2018 - 2025
+    <div class="main-content">
+        <section class="about-section">
+            <h2>About Us</h2>
+            <p>
+                We are a creative studio specializing in design, branding, and digital experiences. 
+                Our passion lies in crafting meaningful solutions that connect brands with their audiences. 
+                Through innovative thinking and meticulous attention to detail, we transform ideas into 
+                impactful visual stories.
+            </p>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <ul class="social-links">
+                    <li><a href="#facebook">Facebook</a></li>
+                    <li><a href="#instagram">Instagram</a></li>
+                    <li><a href="#linkedin">LinkedIn</a></li>
+                </ul>
+                <div class="copyright">
+                    © Skyline<br>
+                    2018 - 2025
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 </body>
 </html>
