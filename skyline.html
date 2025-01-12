@@ -38,6 +38,24 @@
             list-style: none;
             margin-right: 4rem;
         }
+        
+        /* About section styles */
+        .about-section {
+            max-width: 800px;
+            margin-bottom: 4rem;
+        }
+
+        .about-section h2 {
+            color: #666;
+            font-weight: normal;
+            margin-bottom: 1rem;
+        }
+
+        .about-section p {
+            color: #333;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
 
         /* Main content styles */
         main {
@@ -46,10 +64,16 @@
             margin-top: 4rem;
         }
 
-        .online-section h2 {
-            color: #666;
-            font-weight: normal;
-            margin-bottom: 1rem;
+        /* Footer styles */
+        footer {
+            margin-top: auto;
+            padding-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .social-links {
@@ -62,15 +86,6 @@
 
         .copyright {
             color: #666;
-        }
-
-        /* Footer styles */
-        footer {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            font-size: 4rem;
-            font-weight: normal;
         }
 
         /* Link styles */
@@ -124,25 +139,29 @@
             </ul>
         </nav>
     </header>
+    
+    <section class="about-section">
+        <h2>About Us</h2>
+        <p>
+            We are a creative studio specializing in design, branding, and digital experiences. 
+            Our passion lies in crafting meaningful solutions that connect brands with their audiences. 
+            Through innovative thinking and meticulous attention to detail, we transform ideas into 
+            impactful visual stories.
+        </p>
+    </section>
 
-    <main>
-        <section class="online-section">
-            <h2>Online</h2>
+    <footer>
+        <div class="footer-content">
             <ul class="social-links">
                 <li><a href="#facebook">Facebook</a></li>
                 <li><a href="#instagram">Instagram</a></li>
                 <li><a href="#linkedin">LinkedIn</a></li>
             </ul>
-        </section>
-
-        <section class="copyright">
-            © Skyline<br>
-            2021 - 2025
-        </section>
-    </main>
-
-    <footer>
-        <h2>Skyline</h2>
+            <div class="copyright">
+                © Skyline<br>
+                2018 - 2025
+            </div>
+        </div>
     </footer>
 </body>
 </html>
