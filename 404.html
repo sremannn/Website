@@ -20,10 +20,11 @@
         padding: 0;
         box-sizing: border-box;
         -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing:grayscale
+        -moz-osx-font-smoothing: grayscale
     }
 
-    html, body {
+    html,
+    body {
         margin: 0;
         width: 100%;
         height: 100%;
@@ -41,6 +42,31 @@
         margin-left: 20px;
     }
 
+    h1 {
+    color: white;
+    font-weight: 100;
+    line-height: 1.085;
+    letter-spacing: -.0275em;
+    position: relative;
+    will-change:transform, opacity;
+    font-family: "JetBrains Mono", serif;
+}
+
+.header {
+    padding: 1em;
+    width:100%
+}
+
+.header h1 .line {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-size: 24px;
+    overflow: hidden;
+    will-change: transform, opacity;
+    clip-path:polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+}
+
     p {
         font-size: 18px;
         font-weight: 100;
@@ -49,9 +75,12 @@
 
 <body>
 
-    <div class="text-container">
-        <p>Oh Dear,</p>
-        <p>Something is Broken.</p>
+    <div class="header">
+        <h1 style>
+            <div class="line" style="display: block; text-align: start; width: 100%;"><span
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Oh Dear,<br> Something is Broken.</span>
+            </div>
+        </h1>
     </div>
 
 </body>
