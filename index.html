@@ -14,98 +14,102 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing:grayscale
-}
 
-html, body {
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    color: white;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale
+    }
 
-h1 {
-    color: white;
-    font-weight: 100;
-    line-height: 1.085;
-    letter-spacing: -.0275em;
-    position: relative;
-    will-change:transform, opacity;
-    font-family: "JetBrains Mono", serif;
-}
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        color: white;
+    }
 
-.header {
-    padding: 1em;
-    width:100%
-}
-
-.header h1 .line {
-    position: relative;
-    display: block;
-    width: 100%;
-    font-size: 24px;
-    overflow: hidden;
-    will-change: transform, opacity;
-    clip-path:polygon(0 0, 100% 0, 100% 100%, 0% 100%)
-}
-
-.ctas {
-    position: absolute;
-    left: 1em;
-    bottom: 1em;
-    width: max-content;
-    display: flex;
-    gap: 2em;
-    align-items:stretch
-}
-
-.divider {
-    position: relative;
-    width: 2px;
-    color: white;
-    background-color: black;
-    align-self: stretch;
-    will-change: transform, clip-path;
-    transform:rotate(20deg)
-}
-
-.subscribe-btn a, .pro-btn-wrapper a {
-    position: relative;
-    text-decoration: none;
-    color: white;
-    will-change: transform, opacity;
-    cursor:pointer
-}
-
-.pro-btn {
-    cursor:pointer
-}
-
-.subscribe-btn a h1 .line, .pro-btn-wrapper a h1 .line {
-    position: relative;
-    display: block;
-    width: 100%;
-    font-size: 24px;
-    overflow: hidden;
-    will-change: transform, opacity;
-    clip-path:polygon(0 0, 100% 0, 100% 100%, 0% 100%)
-}
-
-@media (max-width: 900px) {
     h1 {
-        font-size: 8vw;
-        letter-spacing:-.035em
+        color: white;
+        font-weight: 100;
+        line-height: 1.085;
+        letter-spacing: -.0275em;
+        position: relative;
+        will-change: transform, opacity;
+        font-family: "JetBrains Mono", serif;
+    }
+
+    .header {
+        padding: 1em;
+        width: 100%
+    }
+
+    .header h1 .line {
+        position: relative;
+        display: block;
+        width: 100%;
+        font-size: 24px;
+        overflow: hidden;
+        will-change: transform, opacity;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
     }
 
     .ctas {
-        gap: 1.5em
+        position: absolute;
+        left: 1em;
+        bottom: 1em;
+        width: max-content;
+        display: flex;
+        gap: 2em;
+        align-items: stretch
     }
-}
+
+    .divider {
+        position: relative;
+        width: 2px;
+        color: white;
+        background-color: black;
+        align-self: stretch;
+        will-change: transform, clip-path;
+        transform: rotate(20deg)
+    }
+
+    .subscribe-btn a,
+    .pro-btn-wrapper a {
+        position: relative;
+        text-decoration: none;
+        color: white;
+        will-change: transform, opacity;
+        cursor: pointer
+    }
+
+    .pro-btn {
+        cursor: pointer
+    }
+
+    .subscribe-btn a h1 .line,
+    .pro-btn-wrapper a h1 .line {
+        position: relative;
+        display: block;
+        width: 100%;
+        font-size: 24px;
+        overflow: hidden;
+        will-change: transform, opacity;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+    }
+
+    @media (max-width: 900px) {
+        h1 {
+            font-size: 8vw;
+            letter-spacing: -.035em
+        }
+
+        .ctas {
+            gap: 1.5em
+        }
+    }
 </style>
 
 <body>
@@ -113,11 +117,11 @@ h1 {
     <div class="header">
         <h1 style>
             <div class="line" style="display: block; text-align: start; width: 100%;"><span
-                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Looking To Chat About Your Next A.I. Proj? Then Email Me At work@sreeman.sh</span>
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">I'm a student currently living in India. I started sharing free ideas organically on youtube & twitter. I started designing at 16. My first gigs were terrible hacks & websites for counter strike friends.</span>
             </div>
         </h1>
     </div>
-    
+
     <div class="ctas">
         <div class="subscribe-btn-wrapper">
             <div class="subscribe-btn">
@@ -146,7 +150,7 @@ h1 {
         <source src="https://www.savoirfaire.nyc/_nuxt/hover.b226066e.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    
+
     <script>
         function playSound() {
             const sound = document.getElementById('clickSound');
