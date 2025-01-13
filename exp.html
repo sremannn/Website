@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #D3D3D3;
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .content {
+            max-width: 800px;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 300;
+        }
+
+        .highlight-pink {
+            color: #ff69b4;
+            text-decoration: none;
+            border-bottom: 1px solid #ff69b4;
+        }
+
+        .highlight-blue {
+            color: #1DA1F2;
+            text-decoration: none;
+            border-bottom: 1px solid #1DA1F2;
+        }
+
+        .underline {
+            text-decoration: none;
+            border-bottom: 1px solid white;
+            color: white;
+        }
+
+        .number {
+            color: #ff69b4;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="content">
+            i'm a designer currently living in nyc. i've been designing different type of things for the internet, from tiny controversial experiments to larger-scale consumer products through conceptual art images i share on twitter. <a href="#" class="underline">scroll down to check out my journey.</a>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            i have a master degree in finance. i've never studied design at school. during my college years, i created a bunch of tumblrs (<span class="number">1</span>,<span class="number">2</span>) receiving 100,000+ visits, curated a newsletter of torrent links called le video club (<span class="highlight-pink">rip</span>), made merch for several french colleges (<span class="number">1</span>), interned at leetchi - the "<span class="highlight-pink">hottest startup #1 in paris (wired)</span>" and also created my first social app (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>).
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            i started sharing free ideas organically on <a href="#" class="highlight-blue">twitter</a>, on apr 1 2021. the first idea was an april fool and i kept going from there. i use interface elements and internet brands to express my emotions and ideas.
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            born and raised in paris, france. i started designing at 16 on a cracked version of photoshop cs2. my first gigs were terrible logos & websites for my counter strike friends. aim, msn or mirc. the early days of remote work.
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            dms are opened on <a href="#" class="underline">twitter</a> and <a href="#" class="underline">telegram</a>. i can do <a href="#" class="underline">email</a> too. love. updated on oct 13th 2023.
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            let currentSection = 0;
+            let isScrolling = false;
+
+            function smoothScroll(target) {
+                isScrolling = true;
+                window.scrollTo({
+                    top: target,
+                    behavior: 'smooth'
+                });
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 1000);
+            }
+
+            window.addEventListener('wheel', (e) => {
+                if (isScrolling) return;
+                
+                if (e.deltaY > 0 && currentSection < sections.length - 1) {
+                    currentSection++;
+                    smoothScroll(sections[currentSection].offsetTop);
+                } else if (e.deltaY < 0 && currentSection > 0) {
+                    currentSection--;
+                    smoothScroll(sections[currentSection].offsetTop);
+                }
+            });
+
+            // Touch events for mobile
+            let touchStart = 0;
+            let touchEnd = 0;
+
+            window.addEventListener('touchstart', (e) => {
+                touchStart = e.changedTouches[0].screenY;
+            });
+
+            window.addEventListener('touchend', (e) => {
+                if (isScrolling) return;
+                
+                touchEnd = e.changedTouches[0].screenY;
+                if (touchStart > touchEnd + 50 && currentSection < sections.length - 1) {
+                    currentSection++;
+                    smoothScroll(sections[currentSection].offsetTop);
+                } else if (touchStart < touchEnd - 50 && currentSection > 0) {
+                    currentSection--;
+                    smoothScroll(sections[currentSection].offsetTop);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
