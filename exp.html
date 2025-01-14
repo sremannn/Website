@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Particle Time Display</title>
+    <title>Particle Time Display with Calendar</title>
     <style>
         body, html {
             margin: 0;
@@ -37,11 +37,46 @@
             font-size: 18px;
             margin-top: 10px;
         }
+        #year-calendar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .month {
+            text-align: center;
+        }
+        .month-name {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .days {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .day-dot {
+            width: 4px;
+            height: 4px;
+            background-color: white;
+            border-radius: 50%;
+            margin: 1px;
+            cursor: pointer;
+        }
+        #selected-date {
+            margin-top: 10px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
     <canvas id="particle-canvas"></canvas>
-    <div id="time-display"></div>
+    <div id="time-display">
+        <div id="time"></div>
+        <div id="date"></div>
+        <div id="year-calendar"></div>
+        <div id="selected-date"></div>
+    </div>
 
     <script>
         // Particle effect
@@ -98,7 +133,12 @@
         init();
         animate();
 
-        // Time display
+        // Time and Calendar display
+        const timeDisplay = document.getElementById('time');
+        const dateDisplay = document.getElementById('date');
+        const yearCalendar = document.getElementById('year-calendar');
+        const selectedDateDisplay = document.getElementById('selected-date');
+
         function updateTime() {
             const now = new Date();
             const timeString = now.toLocaleTimeString('en-US', {
@@ -115,14 +155,59 @@
                 day: 'numeric'
             });
             
-            document.getElementById('time-display').innerHTML = `
-                <div id="time">${time} <span style="font-size: 16px; vertical-align: top;">${period}</span></div>
-                <div id="date">${dateString}</div>
-            `;
+            timeDisplay.innerHTML = `${time} <span style="font-size: 16px; vertical-align: top;">${period}</span>`;
+            dateDisplay.textContent = dateString;
+        }
+
+        function createYearCalendar() {
+            const currentYear = new Date().getFullYear();
+            const months = [
+                'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+            ];
+
+            yearCalendar.innerHTML = '';
+
+            months.forEach((month, index) => {
+                const monthElement = document.createElement('div');
+                monthElement.className = 'month';
+
+                const monthName = document.createElement('div');
+                monthName.className = 'month-name';
+                monthName.textContent = month;
+                monthElement.appendChild(monthName);
+
+                const daysElement = document.createElement('div');
+                daysElement.className = 'days';
+
+                const daysInMonth = new Date(currentYear, index + 1, 0).getDate();
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayDot = document.createElement('div');
+                    dayDot.className = 'day-dot';
+                    dayDot.addEventListener('click', () => showSelectedDate(currentYear, index, day));
+                    daysElement.appendChild(dayDot);
+                }
+
+                monthElement.appendChild(daysElement);
+                yearCalendar.appendChild(monthElement);
+            });
+        }
+
+        function showSelectedDate(year, month, day) {
+            const selectedDate = new Date(year, month, day);
+            const dateString = selectedDate.toLocaleDateString('en-US', {
+                weekday: 'short',
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+            selectedDateDisplay.textContent = `Selected: ${dateString}`;
         }
 
         setInterval(updateTime, 1000);
-        updateTime(); // Initial call
+        updateTime();
+        createYearCalendar();
 
         // Resize handler
         window.addEventListener('resize', () => {
