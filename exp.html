@@ -13,7 +13,7 @@
 </head>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 * {
     margin: 0;
@@ -73,7 +73,7 @@ h1 {
     align-self: stretch;
     will-change: transform, opacity;
     transform: rotate(20deg);
-    opacity: 0;
+    opacity: 1;
 }
 
 .subscribe-btn a,
@@ -144,17 +144,17 @@ a {
 }
 
 .divider.fade-in {
-    animation: fadeInDivider 1s ease-out 1.25s forwards;
+    animation: fadeInDivider 1s ease-out forwards;
 }
 
 @keyframes fadeInDivider {
     from {
         opacity: 0;
-        transform: translateY(20px) rotate(20deg);
+        transform: scaleY(0) rotate(20deg);
     }
     to {
         opacity: 1;
-        transform: translateY(0) rotate(20deg);
+        transform: scaleY(1) rotate(20deg);
     }
 }
 </style>
@@ -169,16 +169,16 @@ a {
     <div class="ctas">
         <div class="subscribe-btn-wrapper fade-in">
             <div class="subscribe-btn">
-                <a href="https://youtube.com/@sreemanrp" onclick="playSound()">
+                <a href="https://youtube.com/@sreemanrp" onclick="playSound(); return true;">
                     <h1>
                         <div class="line"><span>Subscribe</span></div>
                     </h1>
                 </a>
             </div>
         </div>
-        <div class="divider"></div>
+        <div class="divider fade-in"></div>
         <div class="pro-btn-wrapper fade-in">
-            <a href="https://sreemanrp.gumroad.com/l/sreemanrppro" onclick="playSound()">
+            <a href="https://sreemanrp.gumroad.com/l/sreemanrppro" onclick="playSound(); return true;">
                 <h1>
                     <div class="line"><span>GetPRO</span></div>
                 </h1>
@@ -195,11 +195,7 @@ a {
       document.addEventListener('DOMContentLoaded', function() {
     const fadeInElements = document.querySelectorAll('.fade-in');
     fadeInElements.forEach((element, index) => {
-        if (element.classList.contains('divider')) {
-            element.style.animationDelay = '1.25s';
-        } else {
-            element.style.animationDelay = `${0.5 + (index * 0.5)}s`;
-        }
+        element.style.animationDelay = `${0.5 + (index * 0.5)}s`;
         element.style.animationPlayState = 'running';
     });
 });
@@ -211,6 +207,5 @@ function playSound() {
 }
     </script>
     <script src="script.js"></script>
-
 </body>
 </html>
