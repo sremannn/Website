@@ -108,10 +108,10 @@
                 hour12: true
             });
             const [time, period] = timeString.split(' ');
-            const dateString = now.toLocaleDateString(undefined, {
-                weekday: 'long',
+            const dateString = now.toLocaleDateString('en-US', {
+                weekday: 'short',
                 year: 'numeric',
-                month: 'long',
+                month: 'short',
                 day: 'numeric'
             });
             
