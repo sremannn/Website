@@ -9,145 +9,178 @@
     <meta name="author" content="Sreeman Reddy">
     <meta name="description" content="AI Developer, AI Designer...">
     <meta name="keywords" content="AI Design, AI Development, Coding.">
-    <link rel="stylesheet" crossorigin="" href="/assets/index-DguZUYmr.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
 
-    html,
-    body {
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        color: white;
-    }
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+}
 
+h1 {
+    color: white;
+    font-weight: 100;
+    line-height: 1.085;
+    letter-spacing: -.0275em;
+    position: relative;
+    will-change: transform, opacity;
+    font-family: "JetBrains Mono", serif;
+}
+
+.header {
+    padding: 1em;
+    width: 100%
+}
+
+.header h1 .line {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-size: 24px;
+    overflow: hidden;
+    will-change: transform, opacity;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+}
+
+.ctas {
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    width: max-content;
+    display: flex;
+    gap: 2em;
+    align-items: stretch
+}
+
+.divider {
+    position: relative;
+    width: 2px;
+    background-color: white;
+    align-self: stretch;
+    will-change: transform, opacity;
+    transform: rotate(20deg);
+    opacity: 1;
+}
+
+.subscribe-btn a,
+.pro-btn-wrapper a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    will-change: transform, opacity;
+    cursor: pointer;
+}
+
+.pro-btn {
+    cursor: pointer
+}
+
+.subscribe-btn a h1 .line,
+.pro-btn-wrapper a h1 .line {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-size: 24px;
+    overflow: hidden;
+    will-change: transform, opacity;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    will-change: transform, opacity;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
     h1 {
-        color: white;
-        font-weight: 100;
-        line-height: 1.085;
-        letter-spacing: -.0275em;
-        position: relative;
-        will-change: transform, opacity;
-        font-family: "JetBrains Mono", serif;
-    }
-
-    .header {
-        padding: 1em;
-        width: 100%
-    }
-
-    .header h1 .line {
-        position: relative;
-        display: block;
-        width: 100%;
-        font-size: 24px;
-        overflow: hidden;
-        will-change: transform, opacity;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+        font-size: 8vw;
+        letter-spacing: -.035em
     }
 
     .ctas {
-        position: absolute;
-        left: 1em;
-        bottom: 1em;
-        width: max-content;
-        display: flex;
-        gap: 2em;
-        align-items: stretch
+        gap: 1.5em
     }
+}
 
-    .divider {
-        position: relative;
-        width: 2px;
-        color: white;
-        background-color: black;
-        align-self: stretch;
-        will-change: transform, clip-path;
-        transform: rotate(20deg)
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-
-    .subscribe-btn a,
-    .pro-btn-wrapper a {
-        position: relative;
-        text-decoration: none;
-        color: white;
-        will-change: transform, opacity;
-        cursor: pointer;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
-    .pro-btn {
-        cursor: pointer
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.subscribe-btn-wrapper.fade-in {
+    animation-delay: 1s;
+}
+
+.pro-btn-wrapper.fade-in {
+    animation-delay: 1.5s;
+}
+
+.divider.fade-in {
+    animation: fadeInDivider 1s ease-out forwards;
+}
+
+@keyframes fadeInDivider {
+    from {
+        opacity: 0;
+        transform: scaleY(0) rotate(20deg);
     }
-
-    .subscribe-btn a h1 .line,
-    .pro-btn-wrapper a h1 .line {
-        position: relative;
-        display: block;
-        width: 100%;
-        font-size: 24px;
-        overflow: hidden;
-        will-change: transform, opacity;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+    to {
+        opacity: 1;
+        transform: scaleY(1) rotate(20deg);
     }
-
-    a{
-        text-decoration: none;
-        color: white;
-        will-change: transform, opacity;
-        cursor: pointer;
-    }
-
-    @media (max-width: 900px) {
-        h1 {
-            font-size: 8vw;
-            letter-spacing: -.035em
-        }
-
-        .ctas {
-            gap: 1.5em
-        }
-    }
+}
 </style>
 
 <body>
-
     <div class="header">
-        <h1 style>
-            <div class="line" style="display: block; text-align: start; width: 100%;"><span
-                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">I'm A Student Currently Living In India.</span>
-            </div>
+        <h1>
+            <div class="line fade-in"><span>I'm A Student Currently Living In India.</span></div>
         </h1>
     </div>
 
     <div class="ctas">
-        <div class="subscribe-btn-wrapper">
+        <div class="subscribe-btn-wrapper fade-in">
             <div class="subscribe-btn">
-                <a href="https://youtube.com/@sreemanrp" onclick="playSound()">
-                    <h1 style>
-                        <div class="line" style="display: block; text-align: start; width: 100%;"><span
-                                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Subscribe</span>
-                        </div>
+                <a href="https://youtube.com/@sreemanrp" onclick="playSound(); return true;">
+                    <h1>
+                        <div class="line"><span>Subscribe</span></div>
                     </h1>
                 </a>
             </div>
         </div>
-        <div class="divider" style="color: white; clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);"></div>
-        <div class="pro-btn-wrapper">
-            <a href="https://sreemanrp.gumroad.com/l/sreemanrppro" oonclick="playSound()">
-                <h1 style>
-                    <div class="line" style="display: block; text-align: start; width: 100%;"><span
-                            style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">GetPRO</span>
-                    </div>
+        <div class="divider fade-in"></div>
+        <div class="pro-btn-wrapper fade-in">
+            <a href="https://sreemanrp.gumroad.com/l/sreemanrppro" onclick="playSound(); return true;">
+                <h1>
+                    <div class="line"><span>GetPRO</span></div>
                 </h1>
             </a>
         </div>
@@ -157,14 +190,22 @@
         <source src="https://www.savoirfaire.nyc/_nuxt/hover.b226066e.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-
+    
     <script>
-        function playSound() {
-            const sound = document.getElementById('clickSound');
-            sound.currentTime = 0;
-            sound.play();
-        }
-    </script>
+      document.addEventListener('DOMContentLoaded', function() {
+    const fadeInElements = document.querySelectorAll('.fade-in');
+    fadeInElements.forEach((element, index) => {
+        element.style.animationDelay = `${0.5 + (index * 0.5)}s`;
+        element.style.animationPlayState = 'running';
+    });
+});
 
+function playSound() {
+    const sound = document.getElementById('clickSound');
+    sound.currentTime = 0;
+    sound.play();
+}
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
