@@ -26,9 +26,16 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
-            font-size: 3em;
             text-align: center;
             z-index: 1;
+            font-family: Arial, sans-serif;
+        }
+        #time {
+            font-size: 24px;
+        }
+        #date {
+            font-size: 18px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -94,7 +101,13 @@
         // Time display
         function updateTime() {
             const now = new Date();
-            const timeString = now.toLocaleTimeString();
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            const [time, period] = timeString.split(' ');
             const dateString = now.toLocaleDateString(undefined, {
                 weekday: 'long',
                 year: 'numeric',
@@ -103,8 +116,8 @@
             });
             
             document.getElementById('time-display').innerHTML = `
-                <div>${timeString}</div>
-                <div style="font-size: 0.5em;">${dateString}</div>
+                <div id="time">${time} <span style="font-size: 16px; vertical-align: top;">${period}</span></div>
+                <div id="date">${dateString}</div>
             `;
         }
 
