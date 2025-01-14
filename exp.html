@@ -1,137 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="https://www.codegrid.com/site-icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sreeman P.</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #D3D3D3;
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        section {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .content {
-            max-width: 800px;
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 300;
-        }
-
-        .highlight-pink {
-            color: #ff69b4;
-            text-decoration: none;
-            border-bottom: 1px solid #ff69b4;
-        }
-
-        .highlight-blue {
-            color: #1DA1F2;
-            text-decoration: none;
-            border-bottom: 1px solid #1DA1F2;
-        }
-
-        .underline {
-            text-decoration: none;
-            border-bottom: 1px solid white;
-            color: white;
-        }
-
-        .number {
-            color: #ff69b4;
-            font-size: 0.8em;
-        }
-    </style>
+    <meta name="author" content="Sreeman Reddy">
+    <meta name="description" content="AI Developer, AI Designer...">
+    <meta name="keywords" content="AI Design, AI Development, Coding.">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    color: white;
+    font-weight: 100;
+    line-height: 1.085;
+    letter-spacing: -.0275em;
+    position: relative;
+    will-change: transform, opacity;
+    font-family: "JetBrains Mono", serif;
+}
+
+.header {
+    padding: 1em;
+    width: 100%
+}
+
+.header h1 .line {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-size: 24px;
+    overflow: hidden;
+    will-change: transform, opacity;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+}
+
+.ctas {
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    width: max-content;
+    display: flex;
+    gap: 2em;
+    align-items: stretch
+}
+
+.divider {
+    position: relative;
+    width: 2px;
+    color: white;
+    background-color: white;
+    align-self: stretch;
+    will-change: transform, clip-path;
+    transform: rotate(20deg)
+}
+
+.subscribe-btn a,
+.pro-btn-wrapper a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    will-change: transform, opacity;
+    cursor: pointer;
+}
+
+.pro-btn {
+    cursor: pointer
+}
+
+.subscribe-btn a h1 .line,
+.pro-btn-wrapper a h1 .line {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-size: 24px;
+    overflow: hidden;
+    will-change: transform, opacity;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    will-change: transform, opacity;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    h1 {
+        font-size: 8vw;
+        letter-spacing: -.035em
+    }
+
+    .ctas {
+        gap: 1.5em
+    }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+
+</style>
+
 <body>
-    <section>
-        <div class="content">
-            i'm a student currently living in India. i've been designing different type of things for the internet, from tiny controversial experiments to larger-scale consumer products through conceptual art images i share on twitter.</a>
-        </div>
-    </section>
+    <div class="header">
+        <h1>
+            <div class="line fade-in"><span>I'm A Student Currently Living In India.</span></div>
+        </h1>
+    </div>
 
-    <section>
-        <div class="content">
-            i started sharing free ideas organically on <a href="https://x.com/sreemanrp" class="highlight-blue">twitter</a>, on apr 1 2024. the first idea was an april fool and i kept going from there. i use interface elements and internet brands to express my emotions and ideas.
+    <div class="ctas">
+        <div class="subscribe-btn-wrapper">
+            <div class="subscribe-btn">
+                <a href="https://youtube.com/@sreemanrp" onclick="playSound()">
+                    <h1>
+                        <div class="line"><span>Subscribe</span></div>
+                    </h1>
+                </a>
+            </div>
         </div>
-    </section>
-
-    <section>
-        <div class="content">
-            born and raised in Andhra Pradesh, India. i started designing at 16. my first gigs were terrible logos & websites for my counter strike friends. aim, msn or mirc. the early days of remote work.
+        <div class="divider"></div>
+        <div class="pro-btn-wrapper">
+            <a href="https://sreemanrp.gumroad.com/l/sreemanrppro" onclick="playSound()">
+                <h1>
+                    <div class="line"><span>GetPRO</span></div>
+                </h1>
+            </a>
         </div>
-    </section>
+    </div>
 
-    <section>
-        <div class="content">
-            dms are opened on <a href="https://x.com/sreemanrp" class="underline">twitter</a> and <a href="https://instagram.com/sreemanrp" class="underline">instagram</a>. i can do <a href="mailto:sreemanthink@gmail.com" class="underline">email</a> too. love. updated on nov 3th 2024.
-        </div>
-    </section>
-
+    <audio id="clickSound" preload="auto">
+        <source src="https://www.savoirfaire.nyc/_nuxt/hover.b226066e.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('section');
-            let currentSection = 0;
-            let isScrolling = false;
+      document.addEventListener('DOMContentLoaded', function() {
+    const fadeInText = document.querySelector('.fade-in');
+    fadeInText.style.animationDelay = '0.5s'; // Delay the animation start by 0.5 seconds
+    fadeInText.style.animationPlayState = 'running';
+});
 
-            function smoothScroll(target) {
-                isScrolling = true;
-                window.scrollTo({
-                    top: target,
-                    behavior: 'smooth'
-                });
-                setTimeout(() => {
-                    isScrolling = false;
-                }, 1000);
-            }
-
-            window.addEventListener('wheel', (e) => {
-                if (isScrolling) return;
-                
-                if (e.deltaY > 0 && currentSection < sections.length - 1) {
-                    currentSection++;
-                    smoothScroll(sections[currentSection].offsetTop);
-                } else if (e.deltaY < 0 && currentSection > 0) {
-                    currentSection--;
-                    smoothScroll(sections[currentSection].offsetTop);
-                }
-            });
-
-            // Touch events for mobile
-            let touchStart = 0;
-            let touchEnd = 0;
-
-            window.addEventListener('touchstart', (e) => {
-                touchStart = e.changedTouches[0].screenY;
-            });
-
-            window.addEventListener('touchend', (e) => {
-                if (isScrolling) return;
-                
-                touchEnd = e.changedTouches[0].screenY;
-                if (touchStart > touchEnd + 50 && currentSection < sections.length - 1) {
-                    currentSection++;
-                    smoothScroll(sections[currentSection].offsetTop);
-                } else if (touchStart < touchEnd - 50 && currentSection > 0) {
-                    currentSection--;
-                    smoothScroll(sections[currentSection].offsetTop);
-                }
-            });
-        });
+function playSound() {
+    const sound = document.getElementById('clickSound');
+    sound.currentTime = 0;
+    sound.play();
+}
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
