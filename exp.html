@@ -135,6 +135,14 @@ a {
     animation: fadeIn 1s ease-out forwards;
 }
 
+.subscribe-btn-wrapper.fade-in {
+    animation-delay: 1s;
+}
+
+.pro-btn-wrapper.fade-in {
+    animation-delay: 1.5s;
+}
+
 
 </style>
 
@@ -146,7 +154,7 @@ a {
     </div>
 
     <div class="ctas">
-        <div class="subscribe-btn-wrapper">
+        <div class="subscribe-btn-wrapper fade-in">
             <div class="subscribe-btn">
                 <a href="https://youtube.com/@sreemanrp" onclick="playSound()">
                     <h1>
@@ -156,7 +164,7 @@ a {
             </div>
         </div>
         <div class="divider"></div>
-        <div class="pro-btn-wrapper">
+        <div class="pro-btn-wrapper fade-in">
             <a href="https://sreemanrp.gumroad.com/l/sreemanrppro" onclick="playSound()">
                 <h1>
                     <div class="line"><span>GetPRO</span></div>
@@ -172,9 +180,11 @@ a {
     
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-    const fadeInText = document.querySelector('.fade-in');
-    fadeInText.style.animationDelay = '0.5s'; // Delay the animation start by 0.5 seconds
-    fadeInText.style.animationPlayState = 'running';
+    const fadeInElements = document.querySelectorAll('.fade-in');
+    fadeInElements.forEach((element, index) => {
+        element.style.animationDelay = `${0.5 + (index * 0.5)}s`;
+        element.style.animationPlayState = 'running';
+    });
 });
 
 function playSound() {
@@ -184,5 +194,6 @@ function playSound() {
 }
     </script>
     <script src="script.js"></script>
+
 </body>
 </html>
