@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar Display</title>
+    <title>Calendar Display with Month Selection</title>
     <style>
         body, html {
             margin: 0;
@@ -89,6 +89,44 @@
             font-size: 12px;
             color: #666;
         }
+        #month-selector {
+            position: relative;
+            max-width: 300px;
+            margin: 20px auto 0;
+        }
+        #month-button {
+            width: 100%;
+            padding: 6px 12px;
+            border: 1px solid #333;
+            border-radius: 16px;
+            font-size: 14px;
+            color: #888;
+            background-color: black;
+            cursor: pointer;
+            text-align: left;
+        }
+        #month-dropdown {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+        #month-dropdown.show {
+            display: block;
+        }
+        .month-option {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .month-option:hover {
+            background-color: #333;
+        }
     </style>
 </head>
 <body>
@@ -99,13 +137,21 @@
             <div id="time"></div>
         </div>
         <div id="calendar"></div>
+        <div id="month-selector">
+            <button id="month-button">Select Month</button>
+            <div id="month-dropdown"></div>
+        </div>
     </div>
     <div id="selected-info"></div>
-    <div id="footer">Version 3.23.0 | crafted by sreeman</div>
+    <div id="footer">Version 1.0 | Created by sreeman</div>
 
     <script>
         let selectedDay = null;
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
         const selectedInfo = document.getElementById('selected-info');
+        const monthButton = document.getElementById('month-button');
+        const monthDropdown = document.getElementById('month-dropdown');
 
         function updateTime() {
             const now = new Date();
@@ -126,16 +172,16 @@
 
         function createCalendar() {
             const calendar = document.getElementById('calendar');
-            const now = new Date();
-            const currentDay = now.getDate();
-            const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+            const now = new Date(currentYear, currentMonth, 1);
+            const currentDay = new Date().getDate();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
             calendar.innerHTML = '';
             
             for (let i = 1; i <= daysInMonth; i++) {
                 const dayElement = document.createElement('div');
                 dayElement.className = 'day-number';
-                if (i === currentDay) {
+                if (i === currentDay && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
                     dayElement.classList.add('current');
                 }
                 dayElement.textContent = i;
@@ -149,11 +195,12 @@
                     dayElement.classList.add('selected');
                     selectedDay = i;
 
-                    const date = new Date(now.getFullYear(), now.getMonth(), i);
+                    const date = new Date(currentYear, currentMonth, i);
                     selectedInfo.textContent = date.toLocaleDateString('en-US', {
                         weekday: 'long',
                         month: 'long',
-                        day: 'numeric'
+                        day: 'numeric',
+                        year: 'numeric'
                     });
                     selectedInfo.style.opacity = '1';
                     
@@ -169,9 +216,46 @@
 
                 calendar.appendChild(dayElement);
             }
+
+            updateMonthButton();
         }
 
+        function updateMonthButton() {
+            const monthName = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long' });
+            monthButton.textContent = `${monthName} ${currentYear}`;
+        }
+
+        function createMonthDropdown() {
+            const months = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+
+            months.forEach((month, index) => {
+                const option = document.createElement('div');
+                option.className = 'month-option';
+                option.textContent = month;
+                option.addEventListener('click', () => {
+                    currentMonth = index;
+                    createCalendar();
+                    monthDropdown.classList.remove('show');
+                });
+                monthDropdown.appendChild(option);
+            });
+        }
+
+        monthButton.addEventListener('click', () => {
+            monthDropdown.classList.toggle('show');
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!event.target.matches('#month-button') && !event.target.matches('.month-option')) {
+                monthDropdown.classList.remove('show');
+            }
+        });
+
         createCalendar();
+        createMonthDropdown();
         updateTime();
         setInterval(updateTime, 1000);
 
