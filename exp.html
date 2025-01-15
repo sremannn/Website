@@ -5,40 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar Display</title>
     <style>
-        body {
+        body, html {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex;
-            align-items: center;
+            height: 100%;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: black;
             color: white;
-        }
-
-        .container {
             display: flex;
-            width: 100%;
-            padding: 40px;
-            gap: 100px;
+            flex-direction: column;
         }
-
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
         #time-display {
-            text-align: left;
+            align-self: flex-start;
+            margin-bottom: 40px;
         }
-
         #date-header {
             color: #888;
             font-size: 14px;
             margin-bottom: 4px;
         }
-
         #today {
             font-size: 32px;
             font-weight: 500;
             margin-bottom: 8px;
         }
-
         #time {
             display: inline-block;
             padding: 6px 12px;
@@ -47,14 +43,13 @@
             font-size: 14px;
             color: #888;
         }
-
         #calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 12px;
-            padding: 20px;
+            gap: 10px;
+            max-width: 300px;
+            margin: 0 auto;
         }
-
         .day-number {
             width: 30px;
             height: 30px;
@@ -67,20 +62,16 @@
             font-size: 14px;
             transition: all 0.3s ease;
         }
-
         .day-number:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
-
         .day-number.current {
             color: white;
         }
-
         .day-number.selected {
             background-color: white;
             color: black;
         }
-
         #selected-info {
             position: absolute;
             background-color: rgba(255, 255, 255, 0.9);
@@ -91,6 +82,12 @@
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.2s;
+        }
+        #footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            color: #666;
         }
     </style>
 </head>
@@ -104,6 +101,7 @@
         <div id="calendar"></div>
     </div>
     <div id="selected-info"></div>
+    <div id="footer">Version 1.0 | Created by sreeman</div>
 
     <script>
         let selectedDay = null;
@@ -112,14 +110,12 @@
         function updateTime() {
             const now = new Date();
             
-            // Update date header
             const dateHeader = document.getElementById('date-header');
             dateHeader.textContent = now.toLocaleDateString('en-US', {
                 month: 'short',
                 day: 'numeric'
             });
 
-            // Update time
             const timeDiv = document.getElementById('time');
             timeDiv.textContent = now.toLocaleTimeString('en-US', {
                 hour: 'numeric',
@@ -136,7 +132,6 @@
 
             calendar.innerHTML = '';
             
-            // Add days
             for (let i = 1; i <= daysInMonth; i++) {
                 const dayElement = document.createElement('div');
                 dayElement.className = 'day-number';
@@ -146,17 +141,14 @@
                 dayElement.textContent = i;
 
                 dayElement.addEventListener('click', (e) => {
-                    // Remove previous selection
                     const previousSelected = document.querySelector('.day-number.selected');
                     if (previousSelected) {
                         previousSelected.classList.remove('selected');
                     }
 
-                    // Add new selection
                     dayElement.classList.add('selected');
                     selectedDay = i;
 
-                    // Show day information
                     const date = new Date(now.getFullYear(), now.getMonth(), i);
                     selectedInfo.textContent = date.toLocaleDateString('en-US', {
                         weekday: 'long',
@@ -165,13 +157,11 @@
                     });
                     selectedInfo.style.opacity = '1';
                     
-                    // Position the info near the clicked element
                     const rect = e.target.getBoundingClientRect();
                     selectedInfo.style.top = `${rect.top - 30}px`;
                     selectedInfo.style.left = `${rect.left + (rect.width / 2)}px`;
                     selectedInfo.style.transform = 'translateX(-50%)';
 
-                    // Hide info after 2 seconds
                     setTimeout(() => {
                         selectedInfo.style.opacity = '0';
                     }, 2000);
@@ -181,12 +171,10 @@
             }
         }
 
-        // Initialize
         createCalendar();
         updateTime();
         setInterval(updateTime, 1000);
 
-        // Update calendar when window is resized
         window.addEventListener('resize', () => {
             if (selectedDay) {
                 const selectedElement = document.querySelector('.day-number.selected');
