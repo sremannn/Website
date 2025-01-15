@@ -3,24 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Display with Dot Calendar</title>
+    <title>Calendar Display</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: black;
             color: white;
         }
 
+        .container {
+            display: flex;
+            width: 100%;
+            padding: 40px;
+            gap: 100px;
+        }
+
         #time-display {
             text-align: left;
-            margin-bottom: 40px;
         }
 
         #date-header {
@@ -44,58 +48,67 @@
             color: #888;
         }
 
-        #dot-calendar {
+        #calendar {
             display: grid;
-            grid-template-columns: repeat(15, 1fr);
+            grid-template-columns: repeat(7, 1fr);
             gap: 12px;
             padding: 20px;
         }
 
-        .dot {
-            width: 6px;
-            height: 6px;
-            background-color: #333;
-            border-radius: 50%;
+        .day-number {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
             cursor: pointer;
-            position: relative;
+            border-radius: 50%;
+            font-size: 14px;
+            transition: all 0.3s ease;
         }
 
-        .dot.current {
+        .day-number:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .day-number.current {
+            color: white;
+        }
+
+        .day-number.selected {
             background-color: white;
+            color: black;
         }
 
-        .tooltip {
+        #selected-info {
             position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
             background-color: rgba(255, 255, 255, 0.9);
             color: black;
             padding: 4px 8px;
             border-radius: 4px;
             font-size: 12px;
-            white-space: nowrap;
-            margin-bottom: 8px;
-            visibility: hidden;
+            pointer-events: none;
             opacity: 0;
             transition: opacity 0.2s;
-        }
-
-        .dot:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <div id="time-display">
-        <div id="date-header"></div>
-        <div id="today">Today</div>
-        <div id="time"></div>
+    <div class="container">
+        <div id="time-display">
+            <div id="date-header"></div>
+            <div id="today">Today</div>
+            <div id="time"></div>
+        </div>
+        <div id="calendar"></div>
     </div>
-    <div id="dot-calendar"></div>
+    <div id="selected-info"></div>
 
     <script>
+        let selectedDay = null;
+        const selectedInfo = document.getElementById('selected-info');
+
         function updateTime() {
             const now = new Date();
             
@@ -115,37 +128,73 @@
             });
         }
 
-        function createDotCalendar() {
-            const calendar = document.getElementById('dot-calendar');
+        function createCalendar() {
+            const calendar = document.getElementById('calendar');
             const now = new Date();
             const currentDay = now.getDate();
-            const totalDots = 15 * 15; // 15x15 grid
+            const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
 
-            for (let i = 1; i <= totalDots; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'dot';
-                if (i <= 15) { // First row
-                    dot.classList.add('current');
+            calendar.innerHTML = '';
+            
+            // Add days
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'day-number';
+                if (i === currentDay) {
+                    dayElement.classList.add('current');
                 }
+                dayElement.textContent = i;
 
-                const tooltip = document.createElement('div');
-                tooltip.className = 'tooltip';
-                const tooltipDate = new Date(now.getFullYear(), now.getMonth(), i);
-                tooltip.textContent = tooltipDate.toLocaleDateString('en-US', {
-                    weekday: 'short',
-                    month: 'short',
-                    day: 'numeric'
+                dayElement.addEventListener('click', (e) => {
+                    // Remove previous selection
+                    const previousSelected = document.querySelector('.day-number.selected');
+                    if (previousSelected) {
+                        previousSelected.classList.remove('selected');
+                    }
+
+                    // Add new selection
+                    dayElement.classList.add('selected');
+                    selectedDay = i;
+
+                    // Show day information
+                    const date = new Date(now.getFullYear(), now.getMonth(), i);
+                    selectedInfo.textContent = date.toLocaleDateString('en-US', {
+                        weekday: 'long',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    selectedInfo.style.opacity = '1';
+                    
+                    // Position the info near the clicked element
+                    const rect = e.target.getBoundingClientRect();
+                    selectedInfo.style.top = `${rect.top - 30}px`;
+                    selectedInfo.style.left = `${rect.left + (rect.width / 2)}px`;
+                    selectedInfo.style.transform = 'translateX(-50%)';
+
+                    // Hide info after 2 seconds
+                    setTimeout(() => {
+                        selectedInfo.style.opacity = '0';
+                    }, 2000);
                 });
 
-                dot.appendChild(tooltip);
-                calendar.appendChild(dot);
+                calendar.appendChild(dayElement);
             }
         }
 
         // Initialize
-        createDotCalendar();
+        createCalendar();
         updateTime();
         setInterval(updateTime, 1000);
+
+        // Update calendar when window is resized
+        window.addEventListener('resize', () => {
+            if (selectedDay) {
+                const selectedElement = document.querySelector('.day-number.selected');
+                if (selectedElement) {
+                    selectedInfo.style.opacity = '0';
+                }
+            }
+        });
     </script>
 </body>
 </html>
