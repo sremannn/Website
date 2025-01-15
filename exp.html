@@ -3,217 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Particle Time Display with Calendar</title>
+    <title>Time Display with Dot Calendar</title>
     <style>
-        body, html {
+        body {
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-        }
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-        }
-        #time-display {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-align: center;
-            z-index: 1;
-            font-family: Arial, sans-serif;
-        }
-        #time {
-            font-size: 24px;
-        }
-        #date {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-        #year-calendar {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .month {
-            text-align: center;
-        }
-        .month-name {
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-        .days {
+            height: 100vh;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: black;
+            color: white;
         }
-        .day-dot {
-            width: 4px;
-            height: 4px;
-            background-color: white;
-            border-radius: 50%;
-            margin: 1px;
-            cursor: pointer;
+
+        #time-display {
+            text-align: left;
+            margin-bottom: 40px;
         }
-        #selected-date {
-            margin-top: 10px;
+
+        #date-header {
+            color: #888;
             font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        #today {
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        #time {
+            display: inline-block;
+            padding: 6px 12px;
+            border: 1px solid #333;
+            border-radius: 16px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        #dot-calendar {
+            display: grid;
+            grid-template-columns: repeat(15, 1fr);
+            gap: 12px;
+            padding: 20px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: #333;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .dot.current {
+            background-color: white;
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            color: black;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            margin-bottom: 8px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .dot:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <canvas id="particle-canvas"></canvas>
     <div id="time-display">
+        <div id="date-header"></div>
+        <div id="today">Today</div>
         <div id="time"></div>
-        <div id="date"></div>
-        <div id="year-calendar"></div>
-        <div id="selected-date"></div>
     </div>
+    <div id="dot-calendar"></div>
 
     <script>
-        // Particle effect
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const particles = [];
-        const particleCount = 100;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 5 + 1;
-                this.speedX = Math.random() * 3 - 1.5;
-                this.speedY = Math.random() * 3 - 1.5;
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.size > 0.2) this.size -= 0.1;
-
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-            }
-
-            draw() {
-                ctx.fillStyle = 'rgba(255, 248, 220, 0.8)'; // Sand-like color
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function init() {
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-            }
-            requestAnimationFrame(animate);
-        }
-
-        init();
-        animate();
-
-        // Time and Calendar display
-        const timeDisplay = document.getElementById('time');
-        const dateDisplay = document.getElementById('date');
-        const yearCalendar = document.getElementById('year-calendar');
-        const selectedDateDisplay = document.getElementById('selected-date');
-
         function updateTime() {
             const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US', {
-                hour: '2-digit',
+            
+            // Update date header
+            const dateHeader = document.getElementById('date-header');
+            dateHeader.textContent = now.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric'
+            });
+
+            // Update time
+            const timeDiv = document.getElementById('time');
+            timeDiv.textContent = now.toLocaleTimeString('en-US', {
+                hour: 'numeric',
                 minute: '2-digit',
-                second: '2-digit',
                 hour12: true
             });
-            const [time, period] = timeString.split(' ');
-            const dateString = now.toLocaleDateString('en-US', {
-                weekday: 'short',
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-            });
-            
-            timeDisplay.innerHTML = `${time} <span style="font-size: 16px; vertical-align: top;">${period}</span>`;
-            dateDisplay.textContent = dateString;
         }
 
-        function createYearCalendar() {
-            const currentYear = new Date().getFullYear();
-            const months = [
-                'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-            ];
+        function createDotCalendar() {
+            const calendar = document.getElementById('dot-calendar');
+            const now = new Date();
+            const currentDay = now.getDate();
+            const totalDots = 15 * 15; // 15x15 grid
 
-            yearCalendar.innerHTML = '';
-
-            months.forEach((month, index) => {
-                const monthElement = document.createElement('div');
-                monthElement.className = 'month';
-
-                const monthName = document.createElement('div');
-                monthName.className = 'month-name';
-                monthName.textContent = month;
-                monthElement.appendChild(monthName);
-
-                const daysElement = document.createElement('div');
-                daysElement.className = 'days';
-
-                const daysInMonth = new Date(currentYear, index + 1, 0).getDate();
-
-                for (let day = 1; day <= daysInMonth; day++) {
-                    const dayDot = document.createElement('div');
-                    dayDot.className = 'day-dot';
-                    dayDot.addEventListener('click', () => showSelectedDate(currentYear, index, day));
-                    daysElement.appendChild(dayDot);
+            for (let i = 1; i <= totalDots; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                if (i <= 15) { // First row
+                    dot.classList.add('current');
                 }
 
-                monthElement.appendChild(daysElement);
-                yearCalendar.appendChild(monthElement);
-            });
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                const tooltipDate = new Date(now.getFullYear(), now.getMonth(), i);
+                tooltip.textContent = tooltipDate.toLocaleDateString('en-US', {
+                    weekday: 'short',
+                    month: 'short',
+                    day: 'numeric'
+                });
+
+                dot.appendChild(tooltip);
+                calendar.appendChild(dot);
+            }
         }
 
-        function showSelectedDate(year, month, day) {
-            const selectedDate = new Date(year, month, day);
-            const dateString = selectedDate.toLocaleDateString('en-US', {
-                weekday: 'short',
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-            });
-            selectedDateDisplay.textContent = `Selected: ${dateString}`;
-        }
-
-        setInterval(updateTime, 1000);
+        // Initialize
+        createDotCalendar();
         updateTime();
-        createYearCalendar();
-
-        // Resize handler
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+        setInterval(updateTime, 1000);
     </script>
 </body>
 </html>
