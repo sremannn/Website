@@ -20,7 +20,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            padding: 20px;
+            padding: 80px 20px 20px; /* Updated container padding */
             position: relative;
         }
 
@@ -28,22 +28,23 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            padding: 8px 16px;
-            border-radius: 20px;
+            width: 40px; /* Updated AI button width */
+            height: 40px; /* Updated AI button height */
+            border-radius: 50%; /* Updated AI button border-radius */
             background: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_1017-mlmnuuaqNlbR14n2yohtR5DfDG1Cr5.jpeg') center/cover;
             border: none;
             color: white;
-            font-size: 16px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 4px;
+            justify-content: center; /* Updated AI button justify-content */
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         #time-display {
-            align-self: flex-start;
-            margin: 60px 0 40px;
+            position: absolute; /* Updated time-display position */
+            top: 20px; /* Updated time-display position */
+            left: 20px; /* Updated time-display position */
         }
 
         #date-header {
@@ -122,7 +123,7 @@
             border-radius: 16px;
             font-size: 14px;
             color: #888;
-            background-color: black;
+            background-color: rgba(0, 0, 0, 0.5); /* Updated month-button background */
             cursor: pointer;
             text-align: left;
         }
@@ -148,7 +149,7 @@
             bottom: 100%;
             left: 0;
             right: 0;
-            background-color: #1a1a1a;
+            background-color: rgba(26, 26, 26, 0.9); /* Updated month-dropdown background */
             border: 1px solid #333;
             border-radius: 8px;
             max-height: 200px;
@@ -167,7 +168,7 @@
         }
 
         .month-option:hover {
-            background-color: #333;
+            background-color: rgba(51, 51, 51, 0.8); /* Updated month-option hover background */
         }
 
         #birthday-modal {
@@ -307,7 +308,7 @@
 <body>
     <div class="container">
         <div id="notification">AI is under Development!.</div>
-        <button id="ai-button">✨ AI</button>
+        <button id="ai-button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9L15.6716 9.17157C17.0049 10.5049 17.6716 11.1716 17.6716 12C17.6716 12.8284 17.0049 13.4951 15.6716 14.8284L15.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M13.5 7L13.6716 7.17157C16.0049 9.50491 17.1716 10.6716 17.1716 12C17.1716 13.3284 16.0049 14.4951 13.6716 16.8284L13.5 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M10.5 7.5L10.6716 7.67157C12.5049 9.50491 13.4216 10.4216 13.4216 12C13.4216 13.5784 12.5049 14.4951 10.6716 16.3284L10.5 16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8.5 9L8.67157 9.17157C10.0049 10.5049 10.6716 11.1716 10.6716 12C10.6716 12.8284 10.0049 13.4951 8.67157 14.8284L8.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
         <div id="time-display">
             <div id="date-header"></div>
             <div id="today">Today</div>
