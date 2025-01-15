@@ -20,7 +20,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            padding: 80px 20px 20px; /* Updated container padding */
+            padding: 20px;
             position: relative;
         }
 
@@ -28,23 +28,23 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            width: 40px; /* Updated AI button width */
-            height: 40px; /* Updated AI button height */
-            border-radius: 50%; /* Updated AI button border-radius */
+            padding: 8px 16px;
+            border-radius: 20px;
             background: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_1017-mlmnuuaqNlbR14n2yohtR5DfDG1Cr5.jpeg') center/cover;
             border: none;
             color: white;
+            font-size: 16px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            justify-content: center; /* Updated AI button justify-content */
+            gap: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         #time-display {
-            position: absolute; /* Updated time-display position */
-            top: 20px; /* Updated time-display position */
-            left: 20px; /* Updated time-display position */
+            position: absolute;
+            top: 20px;
+            left: 20px;
         }
 
         #date-header {
@@ -66,6 +66,15 @@
             border-radius: 16px;
             font-size: 14px;
             color: #888;
+        }
+
+        #calendar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding-top: 60px;
         }
 
         #calendar {
@@ -123,7 +132,7 @@
             border-radius: 16px;
             font-size: 14px;
             color: #888;
-            background-color: rgba(0, 0, 0, 0.5); /* Updated month-button background */
+            background-color: rgba(0, 0, 0, 0.5);
             cursor: pointer;
             text-align: left;
         }
@@ -149,7 +158,7 @@
             bottom: 100%;
             left: 0;
             right: 0;
-            background-color: rgba(26, 26, 26, 0.9); /* Updated month-dropdown background */
+            background-color: rgba(26, 26, 26, 0.9);
             border: 1px solid #333;
             border-radius: 8px;
             max-height: 200px;
@@ -168,7 +177,7 @@
         }
 
         .month-option:hover {
-            background-color: rgba(51, 51, 51, 0.8); /* Updated month-option hover background */
+            background-color: rgba(51, 51, 51, 0.8);
         }
 
         #birthday-modal {
@@ -237,59 +246,6 @@
             color: #666;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            #time-display {
-                margin: 50px 0 30px;
-            }
-
-            #today {
-                font-size: 28px;
-            }
-
-            #calendar {
-                gap: 8px;
-            }
-
-            .day-number {
-                width: 25px;
-                height: 25px;
-                font-size: 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 10px;
-            }
-
-            #time-display {
-                margin: 40px 0 20px;
-            }
-
-            #today {
-                font-size: 24px;
-            }
-
-            #calendar {
-                gap: 5px;
-            }
-
-            .day-number {
-                width: 20px;
-                height: 20px;
-                font-size: 11px;
-            }
-
-            #month-selector {
-                flex-direction: row;
-                align-items: center;
-            }
-        }
         #notification {
             position: fixed;
             top: 80px;
@@ -303,22 +259,74 @@
             transition: opacity 0.3s ease;
             z-index: 1000;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #time-display {
+                position: static;
+                margin-bottom: 20px;
+            }
+
+            #ai-button {
+                top: 10px;
+                right: 10px;
+            }
+
+            #calendar-container {
+                padding-top: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #today {
+                font-size: 24px;
+            }
+
+            #calendar {
+                gap: 5px;
+            }
+
+            .day-number {
+                width: 25px;
+                height: 25px;
+                font-size: 12px;
+            }
+
+            #month-selector {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #add-birthday-button {
+                align-self: flex-end;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div id="notification">AI is under Development!.</div>
-        <button id="ai-button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9L15.6716 9.17157C17.0049 10.5049 17.6716 11.1716 17.6716 12C17.6716 12.8284 17.0049 13.4951 15.6716 14.8284L15.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M13.5 7L13.6716 7.17157C16.0049 9.50491 17.1716 10.6716 17.1716 12C17.1716 13.3284 16.0049 14.4951 13.6716 16.8284L13.5 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M10.5 7.5L10.6716 7.67157C12.5049 9.50491 13.4216 10.4216 13.4216 12C13.4216 13.5784 12.5049 14.4951 10.6716 16.3284L10.5 16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8.5 9L8.67157 9.17157C10.0049 10.5049 10.6716 11.1716 10.6716 12C10.6716 12.8284 10.0049 13.4951 8.67157 14.8284L8.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <button id="ai-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.5 9L15.6716 9.17157C17.0049 10.5049 17.6716 11.1716 17.6716 12C17.6716 12.8284 17.0049 13.4951 15.6716 14.8284L15.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M13.5 7L13.6716 7.17157C16.0049 9.50491 17.1716 10.6716 17.1716 12C17.1716 13.3284 16.0049 14.4951 13.6716 16.8284L13.5 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M10.5 7.5L10.6716 7.67157C12.5049 9.50491 13.4216 10.4216 13.4216 12C13.4216 13.5784 12.5049 14.4951 10.6716 16.3284L10.5 16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M8.5 9L8.67157 9.17157C10.0049 10.5049 10.6716 11.1716 10.6716 12C10.6716 12.8284 10.0049 13.4951 8.67157 14.8284L8.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            AI
+        </button>
         <div id="time-display">
             <div id="date-header"></div>
             <div id="today">Today</div>
             <div id="time"></div>
         </div>
-        <div id="calendar"></div>
-        <div id="month-selector">
-            <button id="month-button">Select Month</button>
-            <button id="add-birthday-button">+</button>
-            <div id="month-dropdown"></div>
+        <div id="calendar-container">
+            <div id="calendar"></div>
+            <div id="month-selector">
+                <button id="month-button">Select Month</button>
+                <button id="add-birthday-button">+</button>
+                <div id="month-dropdown"></div>
+            </div>
         </div>
     </div>
     <div id="birthday-modal">
@@ -338,7 +346,6 @@
         let selectedDay = null;
         let currentMonth = new Date().getMonth();
         let currentYear = new Date().getFullYear();
-        const selectedInfo = document.getElementById('selected-info');
         const monthButton = document.getElementById('month-button');
         const monthDropdown = document.getElementById('month-dropdown');
         const addBirthdayButton = document.getElementById('add-birthday-button');
@@ -392,7 +399,6 @@
                     dayElement.classList.add('selected');
                     selectedDay = i;
 
-                    // Remove selection after 2 seconds
                     setTimeout(() => {
                         dayElement.classList.remove('selected');
                     }, 2000);
