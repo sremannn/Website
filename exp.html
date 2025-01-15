@@ -15,26 +15,49 @@
             display: flex;
             flex-direction: column;
         }
+
         .container {
             flex: 1;
             display: flex;
             flex-direction: column;
             padding: 20px;
+            position: relative;
         }
+
+        #ai-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_1017-mlmnuuaqNlbR14n2yohtR5DfDG1Cr5.jpeg') center/cover;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
         #time-display {
             align-self: flex-start;
-            margin-bottom: 40px;
+            margin: 60px 0 40px;
         }
+
         #date-header {
             color: #888;
             font-size: 14px;
             margin-bottom: 4px;
         }
+
         #today {
             font-size: 32px;
             font-weight: 500;
             margin-bottom: 8px;
         }
+
         #time {
             display: inline-block;
             padding: 6px 12px;
@@ -43,6 +66,7 @@
             font-size: 14px;
             color: #888;
         }
+
         #calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -50,6 +74,7 @@
             max-width: 300px;
             margin: 0 auto;
         }
+
         .day-number {
             width: 30px;
             height: 30px;
@@ -62,45 +87,36 @@
             font-size: 14px;
             transition: all 0.3s ease;
         }
+
         .day-number:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
+
         .day-number.current {
             color: white;
         }
+
         .day-number.selected {
             background-color: white;
             color: black;
         }
+
         .day-number.birthday {
             background-color: #4CAF50;
             color: white;
         }
-        #selected-info {
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.9);
-            color: black;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-        #footer {
-            text-align: center;
-            padding: 10px;
-            font-size: 12px;
-            color: #666;
-        }
+
         #month-selector {
             position: relative;
             max-width: 300px;
             margin: 20px auto 0;
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
         }
-        #month-button, #add-birthday-button {
+
+        #month-button {
+            flex-grow: 1;
             padding: 6px 12px;
             border: 1px solid #333;
             border-radius: 16px;
@@ -108,20 +124,25 @@
             color: #888;
             background-color: black;
             cursor: pointer;
-        }
-        #month-button {
-            flex-grow: 1;
             text-align: left;
-            margin-right: 10px;
         }
+
         #add-birthday-button {
-            width: 30px;
-            height: 30px;
+            padding: 6px 12px;
+            border: 1px solid #333;
+            border-radius: 16px;
+            font-size: 20px;
+            color: #888;
+            background-color: black;
+            cursor: pointer;
+            line-height: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            width: 30px;
+            height: 30px;
         }
+
         #month-dropdown {
             position: absolute;
             bottom: 100%;
@@ -133,17 +154,22 @@
             max-height: 200px;
             overflow-y: auto;
             display: none;
+            z-index: 10;
         }
+
         #month-dropdown.show {
             display: block;
         }
+
         .month-option {
             padding: 8px 12px;
             cursor: pointer;
         }
+
         .month-option:hover {
             background-color: #333;
         }
+
         #birthday-modal {
             display: none;
             position: fixed;
@@ -154,14 +180,17 @@
             height: 100%;
             background-color: rgba(0,0,0,0.4);
         }
+
         .modal-content {
             background-color: #1a1a1a;
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #333;
             border-radius: 8px;
-            width: 300px;
+            width: 90%;
+            max-width: 300px;
         }
+
         .close {
             color: #aaa;
             float: right;
@@ -169,12 +198,12 @@
             font-weight: bold;
             cursor: pointer;
         }
+
         .close:hover,
         .close:focus {
             color: #fff;
-            text-decoration: none;
-            cursor: pointer;
         }
+
         #birthday-form input {
             width: 100%;
             padding: 8px;
@@ -183,7 +212,9 @@
             border-radius: 4px;
             background-color: #222;
             color: white;
+            box-sizing: border-box;
         }
+
         #birthday-form button {
             width: 100%;
             padding: 10px;
@@ -193,13 +224,90 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
         #birthday-form button:hover {
             background-color: #45a049;
+        }
+
+        #footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            #time-display {
+                margin: 50px 0 30px;
+            }
+
+            #today {
+                font-size: 28px;
+            }
+
+            #calendar {
+                gap: 8px;
+            }
+
+            .day-number {
+                width: 25px;
+                height: 25px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            #time-display {
+                margin: 40px 0 20px;
+            }
+
+            #today {
+                font-size: 24px;
+            }
+
+            #calendar {
+                gap: 5px;
+            }
+
+            .day-number {
+                width: 20px;
+                height: 20px;
+                font-size: 11px;
+            }
+
+            #month-selector {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        #notification {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div id="notification">AI is under Development!.</div>
+        <button id="ai-button">✨ AI</button>
         <div id="time-display">
             <div id="date-header"></div>
             <div id="today">Today</div>
@@ -212,20 +320,18 @@
             <div id="month-dropdown"></div>
         </div>
     </div>
-    <div id="selected-info"></div>
-    <div id="footer">Version 3.23.0 | crafted by sreeman</div>
-
     <div id="birthday-modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Actuation?</h2>
+            <h2>Add Birthday</h2>
             <form id="birthday-form">
                 <input type="date" id="birthday-date" required>
                 <input type="text" id="birthday-name" placeholder="Name (optional)">
-                <button type="submit">Add Actuation</button>
+                <button type="submit">Add Birthday</button>
             </form>
         </div>
     </div>
+    <div id="footer">Version 1.0 | Created by sreeman</div>
 
     <script>
         let selectedDay = null;
@@ -285,22 +391,9 @@
                     dayElement.classList.add('selected');
                     selectedDay = i;
 
-                    const date = new Date(currentYear, currentMonth, i);
-                    selectedInfo.textContent = date.toLocaleDateString('en-US', {
-                        weekday: 'long',
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric'
-                    });
-                    selectedInfo.style.opacity = '1';
-                    
-                    const rect = e.target.getBoundingClientRect();
-                    selectedInfo.style.top = `${rect.top - 30}px`;
-                    selectedInfo.style.left = `${rect.left + (rect.width / 2)}px`;
-                    selectedInfo.style.transform = 'translateX(-50%)';
-
+                    // Remove selection after 2 seconds
                     setTimeout(() => {
-                        selectedInfo.style.opacity = '0';
+                        dayElement.classList.remove('selected');
                     }, 2000);
                 });
 
@@ -321,6 +414,7 @@
                 'July', 'August', 'September', 'October', 'November', 'December'
             ];
 
+            monthDropdown.innerHTML = '';
             months.forEach((month, index) => {
                 const option = document.createElement('div');
                 option.className = 'month-option';
@@ -377,18 +471,20 @@
             }
         });
 
+        // Initialize
         createCalendar();
         createMonthDropdown();
         updateTime();
         setInterval(updateTime, 1000);
 
-        window.addEventListener('resize', () => {
-            if (selectedDay) {
-                const selectedElement = document.querySelector('.day-number.selected');
-                if (selectedElement) {
-                    selectedInfo.style.opacity = '0';
-                }
-            }
+        document.getElementById('ai-button').addEventListener('click', () => {
+            const notification = document.getElementById('notification');
+            notification.style.display = 'block';
+            setTimeout(() => notification.style.opacity = '1', 10);
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => notification.style.display = 'none', 300);
+            }, 2000);
         });
     </script>
 </body>
