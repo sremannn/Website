@@ -71,8 +71,8 @@
         }
 
         .menu {
-            position: fixed;
-            top: 20px; /* Adjusted to start above the logo */
+            position: absolute;
+            top: 70px; /* Adjusted to start below the menu button */
             left: 20px; /* Adjusted to align with the menu button */
             width: 200px; /* Fixed width for the menu */
             background: rgba(0, 0, 0, 0.5);
@@ -91,8 +91,7 @@
 
         .menu ul {
             list-style: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.5); /* Top border for menu options */
-            padding-top: 10px; /* Padding for better spacing */
+            padding: 0;
         }
 
         .menu li {
@@ -113,9 +112,9 @@
         }
 
         .info-box {
-            position: fixed;
-            bottom: 100px;
-            left: 20px;
+            position: absolute;
+            top: 70px; /* Adjusted to start below the info button */
+            left: 20px; /* Adjusted to align with the info button */
             background: rgba(0, 0, 0, 0.5);
             border: 1px dashed rgba(255, 255, 255, 0.5);
             padding: 20px;
@@ -216,7 +215,7 @@
         updateTime();
         setInterval(updateTime, 60000);
 
-        // Close menu when clicking outside
+        // Close menu and info box when clicking outside
         document.addEventListener('click', function(event) {
             const menu = document.querySelector('.menu');
             const menuBtn = document.querySelector('.menu-btn');
