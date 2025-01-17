@@ -35,6 +35,7 @@
             position: absolute;
             top: 20px;
             left: 20px;
+            cursor: pointer;
         }
 
         .controls {
@@ -75,26 +76,30 @@
 
         .menu {
             position: fixed;
-            top: -100%;
+            top: 0;
             left: 0;
             width: 100%;
-            height: auto;
             background: rgba(0, 0, 0, 0.5);
             transition: 0.3s;
             padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             z-index: 100;
+            display: none;
         }
 
         .menu.active {
-            top: 0;
+            display: block;
         }
 
         .menu ul {
             list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
         .menu li {
-            margin: 10px 0;
+            margin: 0;
         }
 
         .menu a {
@@ -150,14 +155,14 @@
     <div class="gradient"></div>
     
     <div class="container">
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0008-GcodxC1ErXLuhnRBu0CV9ZD7kuMw58.jpeg" alt="Oloid Logo" class="logo">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0008-GcodxC1ErXLuhnRBu0CV9ZD7kuMw58.jpeg" alt="Oloid Logo" class="logo" onclick="handleLogoClick()">
     </div>
 
     <nav class="menu">
         <ul>
-            <li><a href="#index" target="_blank">Index</a></li>
-            <li><a href="#about" target="_blank">About Us</a></li>
-            <li><a href="#support" target="_blank">Support</a></li>
+            <li><a href="#index">Index</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#support">Support</a></li>
         </ul>
     </nav>
 
@@ -179,6 +184,10 @@
     </div>
 
     <script>
+        function handleLogoClick() {
+            alert('Logo clicked!');
+        }
+
         function toggleMenu() {
             document.querySelector('.menu').classList.toggle('active');
         }
