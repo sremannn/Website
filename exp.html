@@ -75,18 +75,18 @@
 
         .menu {
             position: fixed;
-            bottom: -100%;
+            top: -100%;
             left: 0;
             width: 100%;
             height: auto;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.5);
             transition: 0.3s;
             padding: 20px;
             z-index: 100;
         }
 
         .menu.active {
-            bottom: 0;
+            top: 0;
         }
 
         .menu ul {
@@ -107,8 +107,8 @@
             position: fixed;
             bottom: 100px;
             left: 20px;
-            background: rgba(0, 0, 0, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed rgba(255, 255, 255, 0.5);
             padding: 20px;
             width: 300px;
             display: none;
@@ -123,6 +123,12 @@
             margin: 10px 0;
             font-size: 14px;
             line-height: 1.5;
+        }
+
+        .time-title {
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
 
         .time {
@@ -166,8 +172,10 @@
             <button class="menu-btn" onclick="toggleMenu()">☰</button>
             <button class="info-btn" onclick="toggleInfo()">💡</button>
         </div>
-        <span class="time" id="current-time"></span>
-        <span class="title">Oloid</span>
+        <div class="time-title">
+            <span class="time" id="current-time"></span>
+            <span class="title">Oloid</span>
+        </div>
     </div>
 
     <script>
