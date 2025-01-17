@@ -95,6 +95,8 @@
 
         .menu ul {
             list-style: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.5); /* Top border for menu options */
+            padding-top: 10px; /* Padding for better spacing */
         }
 
         .menu li {
@@ -161,7 +163,9 @@
     <div class="gradient"></div>
     
     <div class="container">
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0008-GcodxC1ErXLuhnRBu0CV9ZD7kuMw58.jpeg" alt="Oloid Logo" class="logo" onclick="handleLogoClick()">
+        <a href="https://example.com" target="_blank">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0008-GcodxC1ErXLuhnRBu0CV9ZD7kuMw58.jpeg" alt="Oloid Logo" class="logo">
+        </a>
     </div>
 
     <nav class="menu">
@@ -190,10 +194,6 @@
     </div>
 
     <script>
-        function handleLogoClick() {
-            alert('Logo clicked!');
-        }
-
         function toggleMenu() {
             document.querySelector('.menu').classList.toggle('active');
         }
@@ -212,6 +212,15 @@
         // Update time immediately and then every minute
         updateTime();
         setInterval(updateTime, 60000);
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.querySelector('.menu');
+            const menuBtn = document.querySelector('.menu-btn');
+            if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
