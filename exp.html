@@ -7,13 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.245.0/dist/umd/lucide-react.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             background-color: #000000;
             color: #ffffff;
@@ -76,7 +72,7 @@
 
         .menu {
             position: fixed;
-            top: 60px; /* Adjusted to start below the logo */
+            top: 20px; /* Adjusted to start above the logo */
             left: 20px; /* Adjusted to align with the menu button */
             width: 200px; /* Fixed width for the menu */
             background: rgba(0, 0, 0, 0.5);
@@ -164,7 +160,7 @@
     
     <div class="container">
         <a href="https://example.com" target="_blank">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0008-GcodxC1ErXLuhnRBu0CV9ZD7kuMw58.jpeg" alt="Oloid Logo" class="logo">
+            <div class="logo bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
         </a>
     </div>
 
@@ -184,8 +180,12 @@
 
     <div class="controls">
         <div class="icons">
-            <button class="menu-btn" onclick="toggleMenu()">☰</button>
-            <button class="info-btn" onclick="toggleInfo()">💡</button>
+            <button class="menu-btn" onclick="toggleMenu()">
+                <span data-feather="menu" class="h-4 w-4"></span>
+            </button>
+            <button class="info-btn" onclick="toggleInfo()">
+                <span data-feather="info" class="h-4 w-4"></span>
+            </button>
         </div>
         <div class="time-title">
             <span class="time" id="current-time"></span>
@@ -194,6 +194,9 @@
     </div>
 
     <script>
+        // Initialize Lucide icons
+        lucide.createIcons()
+
         function toggleMenu() {
             document.querySelector('.menu').classList.toggle('active');
         }
@@ -217,8 +220,15 @@
         document.addEventListener('click', function(event) {
             const menu = document.querySelector('.menu');
             const menuBtn = document.querySelector('.menu-btn');
-            if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+            const infoBox = document.querySelector('.info-box');
+            const infoBtn = document.querySelector('.info-btn');
+
+            if (menu && !menu.contains(event.target) && !menuBtn.contains(event.target)) {
                 menu.classList.remove('active');
+            }
+
+            if (infoBox && !infoBox.contains(event.target) && !infoBtn.contains(event.target)) {
+                infoBox.classList.remove('active');
             }
         });
     </script>
