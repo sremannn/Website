@@ -77,11 +77,13 @@
         .menu {
             position: fixed;
             top: 60px; /* Adjusted to start below the logo */
-            left: 0;
-            width: 100%;
+            left: 20px; /* Adjusted to align with the menu button */
+            width: 200px; /* Fixed width for the menu */
             background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.5); /* Added border */
+            border-radius: 8px; /* Rounded corners */
             transition: 0.3s;
-            padding: 20px;
+            padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             z-index: 100;
             display: none;
@@ -96,13 +98,20 @@
         }
 
         .menu li {
-            margin: 10px 0;
+            margin: 5px 0;
         }
 
         .menu a {
             color: white;
             text-decoration: none;
             font-size: 18px;
+            display: block; /* Ensures the links take the full width of the menu */
+            padding: 5px 10px; /* Padding for better click area */
+        }
+
+        .menu a:hover {
+            background: rgba(255, 255, 255, 0.1); /* Hover effect */
+            border-radius: 4px; /* Rounded corners for hover */
         }
 
         .info-box {
