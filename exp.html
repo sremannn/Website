@@ -4,55 +4,121 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VERSE</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      height: 100vh;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+  font-family: 'JetBrains Mono', monospace;
+  background-color: #000000;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
-    .container {
-      text-align: left;
-    }
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+}
 
-    h1 {
-      font-size: 48px;
-      font-weight: bold;
-      margin: 0;
-    }
+.content {
+  text-align: left;
+}
 
-    .subtitle {
-      font-size: 24px;
-      margin-top: 10px;
-    }
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 
-    .contact-info {
-      margin-top: 40px;
-      font-size: 18px;
-      line-height: 1.6;
-    }
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
 
-    .contact-info div {
-      margin-bottom: 10px;
-    }
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.text {
+  font-size: 14px;
+}
+
+.footer {
+  text-align: left;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.footer-text {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.status-color {
+  color: #006EFE;
+}
+
   </style>
-</head>
 <body>
   <div class="container">
-    <h1>VERSE</h1>
-    <div class="subtitle">I MAKE COOL WEBSITES</div>
-    <div class="contact-info">
-      <div>TWITTER: @verse_</div>
-      <div>EMAIL: ab@verse.sh</div>
+    <div class="content">
+      <h1 class="title">VERSE</h1>
+      <p class="subtitle">I MAKE COOL WEBSITES</p>
+      <div class="contact">
+        <div class="contact-item">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path><path d="M12 7a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 3.5 3.5 0 0 0-1.89 0l-.35.35a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.35-.35a3.5 3.5 0 0 0 0-1.89l-.35-.35a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.35.35a3.5 3.5 0 0 0 1.89 0l.35-.35a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33 3.5 3.5 0 0 0 0 1.89l.35.35a2 2 0 0 1 0 2.83l-.35.35a3.5 3.5 0 0 0 0 1.89z"></path></svg>
+          <span class="text">@verse_</span>
+        </div>
+        <div class="contact-item">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span class="text">ab@verse.sh</span>
+        </div>
+      </div>
     </div>
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#" class="link">Index</a>
+        <a href="#" class="link">Docs</a>
+        <a href="#" class="link">Help</a>
+        <a href="#" class="link">Contact</a>
+        <a href="#" class="link">Legal</a>
+      </div>
+      <p class="footer-text">• All systems normal <span class="status-color">(#006EFE)</span></p>
+      <p class="footer-text">© 2025 Oloid Inc.</p>
+    </footer>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
