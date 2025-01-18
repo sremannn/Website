@@ -13,57 +13,40 @@
       font-family: 'JetBrains Mono', monospace;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       height: 100vh;
       margin: 0;
+      padding: 2rem;
     }
     .header {
       text-align: left;
-      margin-top: 2rem;
-      margin-left: 2rem;
     }
     .header h1 {
       font-size: 3rem;
       font-weight: bold;
       margin: 0;
+      color: #006EFE;
     }
     .header p {
       font-size: 1.2rem;
       margin: 0.5rem 0 0;
     }
-    .contact {
+    .nav-links {
       margin-top: 1rem;
-      text-align: left;
-      margin-left: 2rem;
     }
-    .contact p {
-      font-size: 1rem;
-      margin: 0.5rem 0 0;
-    }
-    .footer {
-      margin-bottom: 2rem;
-      text-align: center;
-      font-size: 0.8rem;
-    }
-    .footer a {
+    .nav-links a {
       color: white;
       text-decoration: none;
-      margin-left: 0.5rem;
+      margin-right: 1rem;
+      font-size: 1rem;
     }
-    .skull-container {
-      width: 100%;
-      height: 50vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .nav-links a.special {
+      color: #006EFE;
     }
-    .skull {
-      width: 200px;
-      height: 200px;
-      background-color: black;
-      border: 2px dashed white;
-      border-radius: 10px;
+    .status {
+      margin-top: 1rem;
+      font-size: 0.8rem;
     }
   </style>
 </head>
@@ -72,15 +55,14 @@
     <h1>VERSE</h1>
     <p>I MAKE COOL WEBSITES</p>
   </div>
-  <div class="contact">
-    <p>TWITTER: @verse_</p>
-    <p>EMAIL: ab@verse.sh</p>
+  <div class="nav-links">
+    <a href="#" class="special">Index</a>
+    <a href="#" class="special">Docs</a>
+    <a href="#" class="special">Content</a>
+    <a href="#" class="special">Help</a>
   </div>
-  <div class="skull-container">
-    <div class="skull"></div>
-  </div>
-  <div class="footer">
-    <p>REACT + REACT-THREE-FIBER <a href="#">[LINK]</a></p>
+  <div class="status">
+    <p>All systems normal</p>
   </div>
 </body>
 </html>
