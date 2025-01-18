@@ -1,291 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oloid AI Interface</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oloid - Super Human Intelligence</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100vh;
+      margin: 0;
+    }
+    .header {
+      text-align: left;
+      margin-top: 2rem;
+      margin-left: 2rem;
+    }
+    .header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 0;
+    }
+    .header p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0 0;
+    }
+    .contact {
+      margin-top: 1rem;
+      text-align: left;
+      margin-left: 2rem;
+    }
+    .contact p {
+      font-size: 1rem;
+      margin: 0.5rem 0 0;
+    }
+    .footer {
+      margin-bottom: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+    .footer a {
+      color: white;
+      text-decoration: none;
+      margin-left: 0.5rem;
+    }
+    .skull-container {
+      width: 100%;
+      height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .skull {
+      width: 200px;
+      height: 200px;
+      background-color: black;
+      border: 2px dashed white;
+      border-radius: 10px;
+    }
+  </style>
 </head>
-    <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: black;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.container {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-}
-
-.interface {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-.circle {
-    position: relative;
-    width: 300px;
-    height: 300px;
-}
-
-/* Icons */
-.icon {
-    position: absolute;
-    width: 48px;
-    height: 48px;
-    background-color: #222;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-}
-
-.laptop { top: 0; left: 50%; transform: translateX(-50%); }
-.phone { top: 50%; right: 0; transform: translateY(-50%); }
-.watch { bottom: 0; left: 50%; transform: translateX(-50%); }
-.sr { top: 25%; left: 0; }
-.ar { top: 25%; right: 0; }
-
-/* Center Element */
-.center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    background-color: #222;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.letter {
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-/* Radiating Lines */
-.lines {
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    animation: rotate 20s linear infinite;
-}
-
-.lines::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        transparent 10deg,
-        rgba(255, 255, 255, 0.2) 10deg,
-        rgba(255, 255, 255, 0.2) 11deg
-    );
-}
-
-/* Content */
-.content {
-    text-align: center;
-}
-
-.content h1 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.content p {
-    color: #888;
-    font-size: 0.9rem;
-}
-
-/* Action Buttons */
-.actions {
-    position: fixed;
-    bottom: 2rem;
-    display: flex;
-    gap: 2rem;
-}
-
-.action-button {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background-color: #222;
-    border: none;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background-color: #222;
-    padding: 2rem;
-    border-radius: 1rem;
-    text-align: center;
-}
-
-.close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    cursor: pointer;
-}
-
-#qrcode {
-    margin: 2rem 0;
-    padding: 1rem;
-    background: white;
-    border-radius: 0.5rem;
-    display: inline-block;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* Icons */
-.icon-laptop::before { content: '💻'; }
-.icon-phone::before { content: '📱'; }
-.icon-watch::before { content: '⌚'; }
-.icon-qr::before { content: '📱'; }
-.icon-share::before { content: '↗️'; }
-    </style>
 <body>
-    <div class="container">
-        <div class="interface">
-            <!-- Circular Interface -->
-            <div class="circle">
-                <!-- Icons -->
-                <div class="icon laptop"><i class="icon-laptop"></i></div>
-                <div class="icon phone"><i class="icon-phone"></i></div>
-                <div class="icon watch"><i class="icon-watch"></i></div>
-                <div class="icon sr">SR</div>
-                <div class="icon ar">AR</div>
-
-                <!-- Center Element with Lines -->
-                <div class="center">
-                    <div class="lines"></div>
-                    <div class="letter">E</div>
-                </div>
-            </div>
-
-            <!-- Text Content -->
-            <div class="content">
-                <h1>Oloid AI</h1>
-                <p>end-to-end encrypted AI</p>
-            </div>
-
-            <!-- Bottom Actions -->
-            <div class="actions">
-                <button id="qrButton" class="action-button">
-                    <i class="icon-qr"></i>
-                </button>
-                <button id="shareButton" class="action-button">
-                    <i class="icon-share"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- QR Code Modal -->
-        <div id="qrModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Invite Friends</h2>
-                <div id="qrcode"></div>
-                <p>Scan to join Oloid AI</p>
-            </div>
-        </div>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const qrButton = document.getElementById('qrButton');
-    const shareButton = document.getElementById('shareButton');
-    const modal = document.getElementById('qrModal');
-    const closeBtn = document.querySelector('.close');
-    const qrcodeElement = document.getElementById('qrcode');
-
-    // QR Code Generation
-    qrButton.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        // Clear previous QR code
-        qrcodeElement.innerHTML = '';
-        // Generate new QR code
-        QRCode.toCanvas(qrcodeElement, window.location.href, {
-            width: 200,
-            margin: 2,
-            color: {
-                dark: '#000000',
-                light: '#ffffff'
-            }
-        });
-    });
-
-    // Close Modal
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-
-    // Share Functionality
-    shareButton.addEventListener('click', async () => {
-        try {
-            if (navigator.share) {
-                await navigator.share({
-                    title: 'Oloid AI',
-                    text: 'Check out this end-to-end encrypted AI platform!',
-                    url: window.location.href
-                });
-            } else {
-                // Fallback to clipboard
-                await navigator.clipboard.writeText(window.location.href);
-                alert('Link copied to clipboard!');
-            }
-        } catch (error) {
-            console.error('Error sharing:', error);
-        }
-    });
-});
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
-    <script src="script.js"></script>
+  <div class="header">
+    <h1>OLOID AI</h1>
+    <p>I MAKE COOL WEBSITES</p>
+  </div>
+  <div class="contact">
+    <p>TWITTER: @verse_</p>
+    <p>EMAIL: ab@verse.sh</p>
+  </div>
+  <div class="skull-container">
+    <div class="skull"></div>
+  </div>
+  <div class="footer">
+    <p>REACT + REACT-THREE-FIBER <a href="#">[LINK]</a></p>
+  </div>
 </body>
-</html>
