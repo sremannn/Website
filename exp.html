@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LAM Playground & Newsroom</title>
+    <title>Oloid - LAM Playground & Newsroom</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap');
 
 :root {
     --orange: #FF4400;
@@ -36,11 +36,29 @@ body {
     padding: 2rem;
 }
 
+/* Header Styles */
+.main-header {
+    background-color: var(--orange);
+    padding: 1.5rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.brand {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--white);
+}
+
+/* Section Styles */
 section {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-top: 80px; /* Account for fixed header */
 }
 
 /* LAM Playground Styles */
@@ -60,7 +78,7 @@ section {
     margin-bottom: 3rem;
 }
 
-.question-section h2 {
+.question-section h3 {
     font-size: 4rem;
     font-weight: 300;
 }
@@ -197,7 +215,7 @@ section {
 /* Responsive Styles */
 @media (max-width: 1024px) {
     .main-title,
-    .question-section h2 {
+    .question-section h3 {
         font-size: 4rem;
     }
 
@@ -211,8 +229,12 @@ section {
 }
 
 @media (max-width: 768px) {
+    .brand {
+        font-size: 2rem;
+    }
+
     .main-title,
-    .question-section h2 {
+    .question-section h3 {
         font-size: 3rem;
     }
 
@@ -232,8 +254,12 @@ section {
 }
 
 @media (max-width: 480px) {
+    .brand {
+        font-size: 1.8rem;
+    }
+
     .main-title,
-    .question-section h2 {
+    .question-section h3 {
         font-size: 2.5rem;
     }
 
@@ -256,16 +282,21 @@ section {
         height: 60px;
     }
 }
-  </style>
+    </style>
 <body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="brand">Oloid</h1>
+        </div>
+    </header>
+
     <main>
-        <!-- LAM Playground Section -->
         <section class="lam-section">
             <div class="container">
-                <h1 class="main-title">welcome to LAM<br>playground</h1>
+                <h2 class="main-title">welcome to LAM<br>playground</h2>
                 
                 <div class="question-section">
-                    <h2>what is LAM<br>playground?</h2>
+                    <h3>what is LAM<br>playground?</h3>
                     <div class="question-icon">
                         <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0036-w1ay9qg8sxCgWCteECSQ1zAL1BKRYi.jpeg" alt="Question mark icon" class="floating-icon">
                     </div>
@@ -278,7 +309,6 @@ section {
             </div>
         </section>
 
-        <!-- Newsroom Section -->
         <section class="newsroom-section">
             <div class="container">
                 <div class="logo-wrapper">
@@ -305,7 +335,7 @@ section {
         </section>
     </main>
     <script>
-      // Add smooth scrolling for anchor links
+        // Add smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -332,6 +362,17 @@ const observer = new IntersectionObserver((entries) => {
 // Observe all animated elements
 document.querySelectorAll('.main-title, .description p, .newsroom-title, .hero-text h3, .contact-section').forEach(el => {
     observer.observe(el);
+});
+
+// Add scroll event listener for header background opacity
+const header = document.querySelector('.main-header');
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    if (scrollPosition > 50) {
+        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+    } else {
+        header.style.boxShadow = 'none';
+    }
 });
     </script>
     <script src="script.js"></script>
