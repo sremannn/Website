@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Page Not Found</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@100;300;400;500&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -16,14 +16,20 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      min-height: 100vh; /* Ensures the background fits the content */
+      box-sizing: border-box;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
     }
 
     .error-code {
-      font-size: 8rem;
-      font-weight: 100;
-      margin-bottom: 1rem;
+      font-size: 1rem; /* Normal font size */
+      font-weight: 100; /* Font weight set to 100 */
       position: relative;
+      margin-bottom: 1rem;
     }
 
     .error-code img {
@@ -36,7 +42,6 @@
     }
 
     .message {
-      text-align: center;
       font-size: 1.2rem;
       font-weight: 300;
       margin-bottom: 1.5rem;
@@ -56,11 +61,13 @@
   </style>
 </head>
 <body>
-  <div class="error-code">
-    404
-    <img src="https://via.placeholder.com/40" alt="Floating Image">
+  <div class="container">
+    <div class="error-code">
+      404
+      <img src="https://via.placeholder.com/40" alt="Floating Image">
+    </div>
+    <div class="message">the page you're looking for could not be found</div>
+    <a href="javascript:history.back()" class="go-back">go back</a>
   </div>
-  <div class="message">the page you're looking for could not be found</div>
-  <a href="javascript:history.back()" class="go-back">go back</a>
 </body>
 </html>
