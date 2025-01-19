@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .error-code {
+      font-size: 6rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+
+    .rabbit {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin-bottom: 2rem;
+    }
+
+    .rabbit::before,
+    .rabbit::after {
+      content: '';
+      position: absolute;
+      background-color: white;
+    }
+
+    .rabbit::before {
+      width: 60px;
+      height: 100px;
+      border-radius: 50%;
+      top: 0;
+      left: 30px;
+    }
+
+    .rabbit::after {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: black;
+      top: 40px;
+      left: 45px;
+    }
+
+    .rabbit-ear {
+      position: absolute;
+      width: 20px;
+      height: 60px;
+      background-color: white;
+      border-radius: 50%;
+      top: -40px;
+    }
+
+    .rabbit-ear.left {
+      left: 25px;
+      transform: rotate(-20deg);
+    }
+
+    .rabbit-ear.right {
+      right: 25px;
+      transform: rotate(20deg);
+    }
+
+    .message {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .go-back {
+      color: orange;
+      text-decoration: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .go-back:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-code">404</div>
+  <div class="rabbit">
+    <div class="rabbit-ear left"></div>
+    <div class="rabbit-ear right"></div>
+  </div>
+  <div class="message">the page you're looking for could not be found</div>
+  <a href="javascript:history.back()" class="go-back">go back</a>
+</body>
+</html>
