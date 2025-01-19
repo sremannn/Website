@@ -1,124 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VERSE</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAM Playground & Newsroom</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
   <style>
-    body {
-  font-family: 'JetBrains Mono', monospace;
-  background-color: #000000;
-  color: #FFFFFF;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap');
+
+:root {
+    --orange: #FF4400;
+    --white: #FFFFFF;
+    --black: #000000;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--black);
+    color: var(--white);
+    line-height: 1.2;
+    overflow-x: hidden;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-  width: 100%;
-  max-width: 600px;
-  padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
-.content {
-  text-align: left;
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+/* LAM Playground Styles */
+.main-title {
+    font-size: 5rem;
+    font-weight: 300;
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
 }
 
-.subtitle {
-  font-size: 18px;
-  margin-bottom: 20px;
+.question-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 3rem;
 }
 
-.contact-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+.question-section h2 {
+    font-size: 4rem;
+    font-weight: 300;
 }
 
-.icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
+.question-icon {
+    width: 80px;
+    height: 80px;
 }
 
-.text {
-  font-size: 14px;
+.floating-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: float 3s ease-in-out infinite;
 }
 
-.footer {
-  text-align: left;
+.description {
+    max-width: 800px;
 }
 
-.footer-links {
-  display: flex;
-  flex-direction: column;
+.description p {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards 0.3s;
 }
 
-.link {
-  font-size: 14px;
-  margin-bottom: 5px;
-  color: #FFFFFF;
-  text-decoration: none;
+/* Newsroom Styles */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
 }
 
-.link:hover {
-  text-decoration: underline;
+.newsroom-title {
+    font-size: 6rem;
+    font-weight: 400;
+    color: var(--orange);
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: fadeInLeft 0.8s ease forwards;
 }
 
-.footer-text {
-  font-size: 14px;
-  margin-top: 10px;
+.megaphone-wrapper {
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: fadeInRight 0.8s ease forwards;
 }
 
-.status-color {
-  color: #006EFE;
+.megaphone-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
+.hero-text h3 {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards 0.3s;
+}
+
+.contact-section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards 0.6s;
+}
+
+.contact-intro {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-link {
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.arrow {
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.contact-link:hover {
+    color: var(--orange);
+}
+
+.contact-link:hover .arrow {
+    transform: translateX(10px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .main-title,
+    .question-section h2 {
+        font-size: 4rem;
+    }
+
+    .newsroom-title {
+        font-size: 5rem;
+    }
+
+    .hero-text h3 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-title,
+    .question-section h2 {
+        font-size: 3rem;
+    }
+
+    .newsroom-title {
+        font-size: 4rem;
+    }
+
+    .hero-text h3 {
+        font-size: 2.5rem;
+    }
+
+    .description p,
+    .contact-intro,
+    .contact-link {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title,
+    .question-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .newsroom-title {
+        font-size: 3rem;
+    }
+
+    .hero-text h3 {
+        font-size: 2rem;
+    }
+
+    .description p,
+    .contact-intro,
+    .contact-link {
+        font-size: 1rem;
+    }
+
+    .question-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
   </style>
 <body>
-  <div class="container">
-    <div class="content">
-      <h1 class="title">VERSE</h1>
-      <p class="subtitle">I MAKE COOL WEBSITES</p>
-      <div class="contact">
-        <div class="contact-item">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path><path d="M12 7a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 3.5 3.5 0 0 0-1.89 0l-.35.35a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.35-.35a3.5 3.5 0 0 0 0-1.89l-.35-.35a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.35.35a3.5 3.5 0 0 0 1.89 0l.35-.35a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33 3.5 3.5 0 0 0 0 1.89l.35.35a2 2 0 0 1 0 2.83l-.35.35a3.5 3.5 0 0 0 0 1.89z"></path></svg>
-          <span class="text">@verse_</span>
-        </div>
-        <div class="contact-item">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <span class="text">ab@verse.sh</span>
-        </div>
-      </div>
-    </div>
-    <footer class="footer">
-      <div class="footer-links">
-        <a href="#" class="link">Index</a>
-        <a href="#" class="link">Docs</a>
-        <a href="#" class="link">Help</a>
-        <a href="#" class="link">Contact</a>
-        <a href="#" class="link">Legal</a>
-      </div>
-      <p class="footer-text">• All systems normal <span class="status-color">(#006EFE)</span></p>
-      <p class="footer-text">© 2025 Oloid Inc.</p>
-    </footer>
-  </div>
-  <script src="script.js"></script>
+    <main>
+        <!-- LAM Playground Section -->
+        <section class="lam-section">
+            <div class="container">
+                <h1 class="main-title">welcome to LAM<br>playground</h1>
+                
+                <div class="question-section">
+                    <h2>what is LAM<br>playground?</h2>
+                    <div class="question-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0036-w1ay9qg8sxCgWCteECSQ1zAL1BKRYi.jpeg" alt="Question mark icon" class="floating-icon">
+                    </div>
+                </div>
+
+                <div class="description">
+                    <p>LAM playground is one of our new experiments to continue building our vision of developing a cross-platform general agent system that can help users perform actions.</p>
+                    <p>we call it a "playground" for a reason: this is a place for you to see for yourself and play with what we're working on. AI products by nature are always iterating rapidly. we always believe our community should be a part of this exciting growth — that's</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsroom Section -->
+        <section class="newsroom-section">
+            <div class="container">
+                <div class="logo-wrapper">
+                    <h2 class="newsroom-title">newsroom</h2>
+                    <div class="megaphone-wrapper">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0035-oe6Xufbt02CgTQmrjMTBc0PTK60I0G.jpeg" alt="Megaphone icon" class="megaphone-icon">
+                    </div>
+                </div>
+
+                <div class="hero-text">
+                    <h3>hear it from us<br>first</h3>
+                </div>
+
+                <div class="contact-section">
+                    <p class="contact-intro">for media inquiries, please contact:</p>
+                    <a href="mailto:media@rabbit.tech" class="contact-link">
+                        media@rabbit.tech <span class="arrow">→</span>
+                    </a>
+                    <a href="#" class="contact-link">
+                        download press kit <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+      // Add smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Add intersection observer for scroll animations
+const observerOptions = {
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe all animated elements
+document.querySelectorAll('.main-title, .description p, .newsroom-title, .hero-text h3, .contact-section').forEach(el => {
+    observer.observe(el);
+});
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
