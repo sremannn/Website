@@ -26,7 +26,7 @@
     }
 
     .error-code {
-      font-size: 6rem; /* Normal font size */
+      font-size: 1rem; /* Normal font size */
       font-weight: 100; /* Font weight set to 100 */
       position: relative;
       margin-bottom: 1rem;
@@ -35,10 +35,10 @@
     .error-code img {
       position: absolute;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      left: 0; /* Positioned at the start of the 0 */
+      transform: translate(-50%, -50%); /* Brings it halfway into the 0 */
       width: 40px;
-      height: 40px;
+      height: 60px; /* Increased image height */
     }
 
     .message {
@@ -64,7 +64,7 @@
   <div class="container">
     <div class="error-code">
       404
-      <img src="https://via.placeholder.com/40" alt="Floating Image">
+      <img src="https://via.placeholder.com/40x60" alt="Floating Image">
     </div>
     <div class="message">the page you're looking for could not be found</div>
     <a href="javascript:history.back()" class="go-back">go back</a>
