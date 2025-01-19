@@ -6,15 +6,15 @@
     <title>Oloid - LAM Playground & Newsroom</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap');
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap');
 
 :root {
     --orange: #FF4400;
     --white: #FFFFFF;
     --black: #000000;
     --transition: all 0.3s ease;
-    --header-height: 50px; /* Reduced header height */
+    --header-height: 80px; /* Increased banner height */
 }
 
 * {
@@ -32,9 +32,10 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 1.5rem 2rem; /* Adjusted padding */
+    padding: 0 2rem;
 }
 
 /* Header Styles */
@@ -46,16 +47,11 @@ body {
     z-index: 1000;
     height: var(--header-height);
     display: flex;
-    align-items: left;
-}
-
-.main-header .container {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    align-items: center;
 }
 
 .brand {
-    font-size: 2rem; /* Reduced font size */
+    font-size: 2.5rem;
     font-weight: 400;
     color: var(--white);
 }
@@ -73,34 +69,33 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
 }
 
 /* Adjust first section to account for header */
 .lam-section {
     padding-top: var(--header-height);
-    min-height: calc(100vh + var(--header-height));
 }
 
 /* LAM Playground Styles */
 .main-title {
-    font-size: 5rem;
+    font-size: 5vw;
     font-weight: 300;
-    margin-bottom: 4rem;
+    margin-bottom: 4vh;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s ease forwards;
-    padding-top: 2rem; /* Added padding to prevent overlap */
 }
 
 .question-section {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 3rem;
+    margin-bottom: 3vh;
 }
 
 .question-section h3 {
-    font-size: 4rem;
+    font-size: 4vw;
     font-weight: 300;
 }
 
@@ -123,22 +118,23 @@ section {
 .description p {
     font-size: 1.5rem;
     line-height: 1.4;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5vh;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s ease forwards 0.3s;
 }
 
 /* Newsroom Styles */
+.newsroom-section {
+    padding-top: 5vh; /* Reduced space between sections */
+}
+
 .logo-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 3vh;
 }
 
 .newsroom-title {
-    font-size: 6rem;
+    font-size: 6vw;
     font-weight: 400;
     color: var(--orange);
     opacity: 0;
@@ -146,24 +142,10 @@ section {
     animation: fadeInLeft 0.8s ease forwards;
 }
 
-.megaphone-wrapper {
-    width: 60px;
-    height: 60px;
-    opacity: 0;
-    transform: translateX(20px);
-    animation: fadeInRight 0.8s ease forwards;
-}
-
-.megaphone-icon {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
 .hero-text h3 {
-    font-size: 4rem;
+    font-size: 4vw;
     font-weight: 300;
-    margin-bottom: 4rem;
+    margin-bottom: 4vh;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s ease forwards 0.3s;
@@ -177,7 +159,7 @@ section {
 
 .contact-intro {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1vh;
 }
 
 .contact-link {
@@ -185,7 +167,7 @@ section {
     color: var(--white);
     text-decoration: none;
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1vh;
     transition: var(--transition);
 }
 
@@ -200,6 +182,14 @@ section {
 
 .contact-link:hover .arrow {
     transform: translateX(10px);
+}
+
+/* Footer Styles */
+.main-footer {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 2vh 0;
+    text-align: center;
 }
 
 /* Animations */
@@ -217,13 +207,6 @@ section {
     }
 }
 
-@keyframes fadeInRight {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
@@ -234,84 +217,83 @@ section {
 }
 
 /* Responsive Styles */
-@media (max-width: 1024px) {
-    .main-title,
-    .question-section h3 {
-        font-size: 4rem;
+@media screen and (max-width: 1200px) {
+    .main-title, .question-section h3 {
+        font-size: 6vw;
     }
-
     .newsroom-title {
-        font-size: 5rem;
+        font-size: 7vw;
     }
-
     .hero-text h3 {
-        font-size: 3.5rem;
+        font-size: 5vw;
     }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     :root {
-        --header-height: 50px;
+        --header-height: 60px;
     }
-
     .brand {
-        font-size: 1.75rem;
+        font-size: 2rem;
     }
-
-    .main-title,
-    .question-section h3 {
-        font-size: 3rem;
+    .main-title, .question-section h3 {
+        font-size: 8vw;
     }
-
     .newsroom-title {
-        font-size: 4rem;
+        font-size: 9vw;
     }
-
     .hero-text h3 {
-        font-size: 2.5rem;
+        font-size: 7vw;
     }
-
-    .description p,
-    .contact-intro,
-    .contact-link {
+    .description p, .contact-intro, .contact-link {
         font-size: 1.2rem;
     }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     :root {
-        --header-height: 45px;
+        --header-height: 50px;
     }
-
     .brand {
         font-size: 1.5rem;
     }
-
-    .main-title,
-    .question-section h3 {
-        font-size: 2.5rem;
+    .main-title, .question-section h3 {
+        font-size: 10vw;
     }
-
     .newsroom-title {
-        font-size: 3rem;
+        font-size: 11vw;
     }
-
     .hero-text h3 {
-        font-size: 2rem;
+        font-size: 9vw;
     }
-
-    .description p,
-    .contact-intro,
-    .contact-link {
+    .description p, .contact-intro, .contact-link {
         font-size: 1rem;
     }
-
     .question-icon {
         width: 60px;
         height: 60px;
     }
 }
-    </style>
+
+/* Styles for larger screens (Smart TVs, etc.) */
+@media screen and (min-width: 1921px) {
+    .container {
+        max-width: 1800px;
+    }
+    .main-title, .question-section h3 {
+        font-size: 4vw;
+    }
+    .newsroom-title {
+        font-size: 5vw;
+    }
+    .hero-text h3 {
+        font-size: 3vw;
+    }
+    .description p, .contact-intro, .contact-link {
+        font-size: 2rem;
+    }
+}
+</style>
 <body>
     <header class="main-header">
         <div class="container">
@@ -320,7 +302,6 @@ section {
     </header>
 
     <main>
-        <!-- Background wrapper -->
         <div class="background-wrapper">
             <section class="lam-section">
                 <div class="container">
@@ -344,9 +325,6 @@ section {
                 <div class="container">
                     <div class="logo-wrapper">
                         <h2 class="newsroom-title">newsroom</h2>
-                        <div class="megaphone-wrapper">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0035-oe6Xufbt02CgTQmrjMTBc0PTK60I0G.jpeg" alt="Megaphone icon" class="megaphone-icon">
-                        </div>
                     </div>
 
                     <div class="hero-text">
@@ -366,6 +344,12 @@ section {
             </section>
         </div>
     </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 oloid inc.</p>
+        </div>
+    </footer>
     <script>
         // Add smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -380,7 +364,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Add intersection observer for scroll animations
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '-60px 0px 0px 0px' // Adjusted for header height
+    rootMargin: '-80px 0px 0px 0px' // Adjusted for increased header height
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -407,6 +391,23 @@ window.addEventListener('scroll', () => {
         header.style.boxShadow = 'none';
     }
 });
+
+// Adjust layout for different screen sizes
+function adjustLayout() {
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+    
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    
+    if (vw / vh > 1.5) {
+        document.body.classList.add('landscape');
+    } else {
+        document.body.classList.remove('landscape');
+    }
+}
+
+window.addEventListener('resize', adjustLayout);
+adjustLayout();
     </script>
     <script src="script.js"></script>
 </body>
