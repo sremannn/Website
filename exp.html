@@ -14,6 +14,7 @@
     --white: #FFFFFF;
     --black: #000000;
     --transition: all 0.3s ease;
+    --header-height: 60px; /* Reduced header height */
 }
 
 * {
@@ -33,23 +34,37 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1.5rem 2rem; /* Adjusted padding */
 }
 
 /* Header Styles */
 .main-header {
     background-color: var(--orange);
-    padding: 1.5rem 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+}
+
+.main-header .container {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .brand {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Reduced font size */
     font-weight: 400;
     color: var(--white);
+}
+
+/* Background wrapper */
+.background-wrapper {
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--black);
 }
 
 /* Section Styles */
@@ -58,7 +73,12 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 80px; /* Account for fixed header */
+}
+
+/* Adjust first section to account for header */
+.lam-section {
+    padding-top: var(--header-height);
+    min-height: calc(100vh + var(--header-height));
 }
 
 /* LAM Playground Styles */
@@ -69,6 +89,7 @@ section {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s ease forwards;
+    padding-top: 2rem; /* Added padding to prevent overlap */
 }
 
 .question-section {
@@ -229,8 +250,12 @@ section {
 }
 
 @media (max-width: 768px) {
+    :root {
+        --header-height: 50px;
+    }
+
     .brand {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 
     .main-title,
@@ -254,8 +279,12 @@ section {
 }
 
 @media (max-width: 480px) {
+    :root {
+        --header-height: 45px;
+    }
+
     .brand {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 
     .main-title,
@@ -291,48 +320,51 @@ section {
     </header>
 
     <main>
-        <section class="lam-section">
-            <div class="container">
-                <h2 class="main-title">welcome to LAM<br>playground</h2>
-                
-                <div class="question-section">
-                    <h3>what is LAM<br>playground?</h3>
-                    <div class="question-icon">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0036-w1ay9qg8sxCgWCteECSQ1zAL1BKRYi.jpeg" alt="Question mark icon" class="floating-icon">
+        <!-- Background wrapper -->
+        <div class="background-wrapper">
+            <section class="lam-section">
+                <div class="container">
+                    <h2 class="main-title">welcome to LAM<br>playground</h2>
+                    
+                    <div class="question-section">
+                        <h3>what is LAM<br>playground?</h3>
+                        <div class="question-icon">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0036-w1ay9qg8sxCgWCteECSQ1zAL1BKRYi.jpeg" alt="Question mark icon" class="floating-icon">
+                        </div>
+                    </div>
+
+                    <div class="description">
+                        <p>LAM playground is one of our new experiments to continue building our vision of developing a cross-platform general agent system that can help users perform actions.</p>
+                        <p>we call it a "playground" for a reason: this is a place for you to see for yourself and play with what we're working on. AI products by nature are always iterating rapidly. we always believe our community should be a part of this exciting growth — that's</p>
                     </div>
                 </div>
+            </section>
 
-                <div class="description">
-                    <p>LAM playground is one of our new experiments to continue building our vision of developing a cross-platform general agent system that can help users perform actions.</p>
-                    <p>we call it a "playground" for a reason: this is a place for you to see for yourself and play with what we're working on. AI products by nature are always iterating rapidly. we always believe our community should be a part of this exciting growth — that's</p>
-                </div>
-            </div>
-        </section>
+            <section class="newsroom-section">
+                <div class="container">
+                    <div class="logo-wrapper">
+                        <h2 class="newsroom-title">newsroom</h2>
+                        <div class="megaphone-wrapper">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0035-oe6Xufbt02CgTQmrjMTBc0PTK60I0G.jpeg" alt="Megaphone icon" class="megaphone-icon">
+                        </div>
+                    </div>
 
-        <section class="newsroom-section">
-            <div class="container">
-                <div class="logo-wrapper">
-                    <h2 class="newsroom-title">newsroom</h2>
-                    <div class="megaphone-wrapper">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0035-oe6Xufbt02CgTQmrjMTBc0PTK60I0G.jpeg" alt="Megaphone icon" class="megaphone-icon">
+                    <div class="hero-text">
+                        <h3>hear it from us<br>first</h3>
+                    </div>
+
+                    <div class="contact-section">
+                        <p class="contact-intro">for media inquiries, please contact:</p>
+                        <a href="mailto:media@rabbit.tech" class="contact-link">
+                            media@rabbit.tech <span class="arrow">→</span>
+                        </a>
+                        <a href="#" class="contact-link">
+                            download press kit <span class="arrow">→</span>
+                        </a>
                     </div>
                 </div>
-
-                <div class="hero-text">
-                    <h3>hear it from us<br>first</h3>
-                </div>
-
-                <div class="contact-section">
-                    <p class="contact-intro">for media inquiries, please contact:</p>
-                    <a href="mailto:media@rabbit.tech" class="contact-link">
-                        media@rabbit.tech <span class="arrow">→</span>
-                    </a>
-                    <a href="#" class="contact-link">
-                        download press kit <span class="arrow">→</span>
-                    </a>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
     <script>
         // Add smooth scrolling for anchor links
@@ -347,7 +379,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Add intersection observer for scroll animations
 const observerOptions = {
-    threshold: 0.1
+    threshold: 0.1,
+    rootMargin: '-60px 0px 0px 0px' // Adjusted for header height
 };
 
 const observer = new IntersectionObserver((entries) => {
